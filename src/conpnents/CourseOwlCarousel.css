@@ -1,0 +1,99 @@
+#offerCoursesCarousel-wrapper {
+  /* padding: 30px 30px; */
+  /* background-color: #eaf9ff; */
+}
+
+.offerCoursescontent-area {
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+  background-color: white;
+}
+#offerCoursesCarousel-wrapper .offerCoursescontent-area .content {
+  border-radius: 20px;
+  box-shadow: 9px 12px 33px -8px rgba(79, 79, 79, 0.75);
+  -webkit-box-shadow: 9px 12px 33px -8px rgba(79, 79, 79, 0.75);
+  -moz-box-shadow: 9px 12px 33px -8px rgba(79, 79, 79, 0.75);
+  margin: 9% 0%;
+}
+
+.offerCourse-imgArea {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+}
+.content {
+  text-align: center;
+  padding: 30px;
+}
+.content h2 {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+
+  /* color: #a0acbd; */
+  color: black;
+}
+.content p {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  text-align: justify;
+  word-spacing: 0px;
+
+  color: black;
+}
+
+#offerCoursesCarousel-wrapper .owl-nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+#offerCoursesCarousel-wrapper .owl-nav .owl-prev {
+  position: absolute;
+
+  left: -22px;
+  top: -120px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: #a0acbd;
+  font-size: 62px;
+  padding: 16px !important;
+}
+#offerCoursesCarousel-wrapper .owl-nav .owl-next {
+  position: absolute;
+  right: 0px;
+  top: -120px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: #a0acbd;
+  font-size: 62px;
+  padding: 16px !important;
+}
+
+#offerCoursesCarousel-wrapper .owl-dot span {
+  width: 20px;
+  height: 10px;
+  margin: 20px 7px;
+  background-color: #a0acbd;
+  display: block;
+  -webkit-backface-visibility: visible;
+  transition: opacity 200ms ease;
+  border-radius: 30px;
+}
+#offerCoursesCarousel-wrapper.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+  background: #1da1f2 !important;
+}
+@media only screen and (max-width: 350px) {
+  #offerCoursesCarousel-wrapper .owl-dot span {
+    display: none;
+  }
+}

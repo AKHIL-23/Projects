@@ -1,0 +1,11 @@
+.HexaItem{
+    background-color: indianred;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+    
+    
+}
