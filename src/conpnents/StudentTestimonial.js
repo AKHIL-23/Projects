@@ -29,10 +29,10 @@ const StudentTestimonial = () => {
         <section className=' '>
             <h1>Students</h1>
             <OwlCarousel
-                className="owl-theme  container mx-auto    "
+                className="owl-theme  container mx-auto p-5   "
                 id="offerCoursesCarousel-wrapper"
                 loop={true}
-                autoplay={false}
+                autoplay={true}
                 dots={false}
                 items={5}
                 touchDrag={true}
@@ -41,8 +41,8 @@ const StudentTestimonial = () => {
                 autoplayTimeout={1700}
                 autoplayHoverPause={true}
                 responsive={state.responsive}
-                // animateOut={'fadeOut'}
-                // animateIn={'flipInX'}
+                animateOut={'fadeOut'}
+                animateIn={'flipInX'}
                 center={false}
                 nav={false}
             >
