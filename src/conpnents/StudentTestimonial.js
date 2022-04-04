@@ -4,6 +4,30 @@ import 'owl.carousel/dist/assets/owl.carousel.min.css';
 import 'owl.carousel/dist/assets/owl.theme.default.min.css';
 import StudentTestimonialItem from './StudentTestimonialItem';
 
+let studentDummyData = [
+    {
+        studentImage: "student image path paste here",
+        studentName: "student 1",
+        studentMessage: "Message from student 1 lorem lorem lorem lorem lorem"
+    },
+    {
+        studentImage: "student image path paste here",
+        studentName: "student 2",
+        studentMessage: "Message from student 2 lorem lorem lorem lorem lorem"
+    },
+    {
+        studentImage: "student image path paste here",
+        studentName: "student 3",
+        studentMessage: "Message from student 3 lorem lorem lorem lorem lorem"
+    },
+    {
+        studentImage: "student image path paste here",
+        studentName: "student 4",
+        studentMessage: "Message from student 4 lorem lorem lorem lorem lorem"
+    }
+
+]
+
 const StudentTestimonial = () => {
     const state = {
         responsive: {
@@ -46,9 +70,9 @@ const StudentTestimonial = () => {
                 center={false}
                 nav={false}
             >
-                <StudentTestimonialItem />
-                <StudentTestimonialItem />
-                <StudentTestimonialItem />
+                <StudentTestimonialItem studentData={studentDummyData} />
+                <StudentTestimonialItem studentData={studentDummyData} />
+                <StudentTestimonialItem studentData={studentDummyData} />
 
 
 

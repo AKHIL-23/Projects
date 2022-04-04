@@ -1,0 +1,10 @@
+.courseBanner{
+
+    height: 100vh;
+    /* background-image: linear-gradient(#00c6ff, #0072ff); */
+    background-image: url('./../../../public/assets/img/blob-scene-haikei.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}

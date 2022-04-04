@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "./HomeComponets/Slider"
 import './Home.css';
-import TrendingCourse from "../TrendingCourse";
+
 import CourseOwlCarousel from "../CourseOwlCarousel";
 import Content from "../Content";
 import Whyus from "../Whyus";
@@ -21,7 +21,7 @@ const Home = () => {
             <StudentTestimonial />
             <QueryForm />
             <Footer />
-            {/* <TrendingCourse /> */}
+
 
 
 

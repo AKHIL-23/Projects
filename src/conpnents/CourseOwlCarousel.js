@@ -30,7 +30,7 @@ const CourseOwlCarousel = () => {
     }
     return (
         <OwlCarousel
-            className="owl-theme relative  w-screen"
+            className="owl-theme relative  w-screen "
             id="offerCoursesCarousel-wrapper"
             loop={true}
             autoplay={true}

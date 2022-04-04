@@ -1,7 +1,7 @@
 import React from 'react'
 import './StudentTestimonialItem.css'
 
-const StudentTestimonialItem = () => {
+const StudentTestimonialItem = (props) => {
     return (
         <>
             <div className=" item my-20 mx-5    p-4 pt-20 rounded-lg bg-blue-500  shadow-xl shadow-black-500/40 relative  ">
@@ -11,7 +11,7 @@ const StudentTestimonialItem = () => {
                     <img src="/assets/img/studentTestimonial/student_1.png" className='' alt="" />
                 </div>
                 <div className='space-y-1  '>
-                    <h1 className='text-xl xl:text-2xl text-white '>Lorem ipsum dolor </h1>
+                    <h1 className='text-xl xl:text-2xl text-white '>{props.studentData[2].studentName}</h1>
                     <div className='space-x-1'>
                         <i className="fa-solid fa-star text-xs text-yellow-400"></i>
                         <i className="fa-solid fa-star text-xs text-yellow-400"></i>
@@ -27,7 +27,7 @@ const StudentTestimonialItem = () => {
                         <i className="fa-brands fa-linkedin-in text-white hover:text-blue-900"></i>
 
                     </div>
-                    <p className='text-justify text-sm text-white '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio numquam harum nulla quas culpa, ducimus architecto doloribus aspernatur  nobis. </p>
+                    <p className='text-justify text-sm text-white '>{props.studentData[2].studentMessage} </p>
                 </div>
 
 
