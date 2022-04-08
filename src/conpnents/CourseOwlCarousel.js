@@ -7,6 +7,72 @@ import 'owl.carousel/dist/assets/owl.theme.default.min.css';
 
 import CourseOwlItems from './CourseOwlItems';
 
+let CoursedummyData = [
+    {
+        c_id: "101",
+        name: "JAVASCRIPT",
+        img: "/assets/img/AllCourseListPage/Android.PNG",
+        price: "$434",
+        iconClass: "fab fa-js-square",
+        iconColor: "#F5DE19",
+        discription: "Discription JAVASCRIPT Lorem usdam exercitationem dolor fugit asperiores",
+        summary: "summary JAVASCRIPT lorem lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa rerum autem dolo harum! Quibusdam exercitationem dolor fugit asperiores"
+
+
+
+    },
+    {
+        c_id: "102",
+        name: "PHP",
+        img: "/assets/img/AllCourseListPage/Android.PNG",
+        price: "$434",
+        iconClass: "fab fa-php",
+        iconColor: "#6181B6",
+        discription: "Discription PHP Lorem usdam exercitationem dolor fugit asperiores",
+        summary: "summary PHP lorem lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa rerum autem dolo harum! Quibusdam exercitationem dolor fugit asperiores"
+
+
+
+    },
+    {
+        c_id: "103",
+        name: "REACT",
+        img: "/assets/img/AllCourseListPage/Android.PNG",
+        price: "$434",
+        iconClass: "fab fa-react",
+        iconColor: "#53C1DE",
+        discription: "Discription REACT Lorem usdam exercitationem dolor fugit asperiores",
+        summary: "summary  REACT lorem lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa rerum autem dolo harum! Quibusdam exercitationem dolor fugit asperiores"
+
+    },
+    {
+
+        c_id: "104",
+        name: "ANDROID",
+        img: "/assets/img/AllCourseListPage/Android.PNG",
+        price: "$434",
+        iconClass: "fab fa-android",
+        iconColor: "#3DDC84",
+        discription: "Discription ANDROID Lorem usdam exercitationem dolor fugit asperiores",
+        summary: "summary ANDROID lorem lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa rerum autem dolo harum! Quibusdam exercitationem dolor fugit asperiores"
+
+
+    },
+    {
+
+        c_id: "105",
+        name: "ANGULAR",
+        img: "/assets/img/AllCourseListPage/Android.PNG",
+        price: "$434",
+        iconClass: "fab fa-angular",
+        iconColor: "#E23237",
+        discription: "Discription ANGULAR Lorem usdam exercitationem dolor fugit asperiores",
+        summary: "summary ANGULAR lorem lorem Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa rerum autem dolo harum! Quibusdam exercitationem dolor fugit asperiores"
+    }
+
+];
+
+
 const CourseOwlCarousel = () => {
     const state = {
         responsive: {
@@ -47,9 +113,8 @@ const CourseOwlCarousel = () => {
             center={true}
             nav={false}
         >
-            <CourseOwlItems />
-            <CourseOwlItems />
-            <CourseOwlItems />
+
+            {CoursedummyData.map(courseData => <CourseOwlItems key={courseData.c_id} data={courseData} />)}
 
 
 

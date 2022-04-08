@@ -22,6 +22,7 @@ const QueryForm = () => {
     let queryHandle = (event) => {
         queryState(event.target.value);
 
+
     }
     let submithandle = (event) => {
         event.preventDefault();

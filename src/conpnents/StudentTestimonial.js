@@ -3,25 +3,26 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.min.css';
 import 'owl.carousel/dist/assets/owl.theme.default.min.css';
 import StudentTestimonialItem from './StudentTestimonialItem';
+import { data } from 'autoprefixer';
 
 let studentDummyData = [
     {
-        studentImage: "student image path paste here",
+        studentImage: "/assets/img/studentTestimonial/student_1.png",
         studentName: "student 1",
         studentMessage: "Message from student 1 lorem lorem lorem lorem lorem"
     },
     {
-        studentImage: "student image path paste here",
+        studentImage: "/assets/img/studentTestimonial/student_2.png",
         studentName: "student 2",
         studentMessage: "Message from student 2 lorem lorem lorem lorem lorem"
     },
     {
-        studentImage: "student image path paste here",
+        studentImage: "/assets/img/studentTestimonial/student_3.png",
         studentName: "student 3",
         studentMessage: "Message from student 3 lorem lorem lorem lorem lorem"
     },
     {
-        studentImage: "student image path paste here",
+        studentImage: "/assets/img/studentTestimonial/student_4.png",
         studentName: "student 4",
         studentMessage: "Message from student 4 lorem lorem lorem lorem lorem"
     }
@@ -51,7 +52,7 @@ const StudentTestimonial = () => {
     }
     return (
         <section className=' '>
-            <h1>Students</h1>
+            <h1 className="text-xl m-2 lg:text-2xl xl:text-3xl 2xl:text-4xl text-center py-3 text-blue-500">Students</h1>
             <OwlCarousel
                 className="owl-theme  container mx-auto p-5   "
                 id="offerCoursesCarousel-wrapper"
@@ -70,10 +71,11 @@ const StudentTestimonial = () => {
                 center={false}
                 nav={false}
             >
+                {/* <StudentTestimonialItem studentData={studentDummyData} />
                 <StudentTestimonialItem studentData={studentDummyData} />
-                <StudentTestimonialItem studentData={studentDummyData} />
-                <StudentTestimonialItem studentData={studentDummyData} />
+                <StudentTestimonialItem studentData={studentDummyData} /> */}
 
+                {studentDummyData.map(data => <StudentTestimonialItem studentData={data} />)}
 
 
 

@@ -7,13 +7,17 @@ import Whyus from './../Whyus'
 import CourseOwlCarousel from './../CourseOwlCarousel'
 import QuerForm from './../QueryForm'
 import Footer from './../Footer'
+import { useParams } from 'react-router-dom';
 
 
 
-const CoursePage = (props) => {
+const CoursePage = () => {
+    const param = useParams();
+
+    console.log(param.c_id);
     return (
         <>
-            <CourseBanner data={props.courseData} />
+            <CourseBanner />
             <Careerguidance />
             <IntervierPreparation />
             <Whyus />
