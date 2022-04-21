@@ -1,0 +1,10 @@
+.inputBox:focus~.inputTextLabel,
+.inputBox:not(:placeholder-shown).inputBox:not(:focus)~ .inputTextLabel{
+    @apply text-blue-500 transform -top-5 left-1 scale-75  bg-white px-4;
+}
+.errMsg{
+    /* display: none; */
+}
+/* .inputBox:invalid ~ .errMsg{
+    display: block;
+} */

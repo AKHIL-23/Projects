@@ -1,6 +1,6 @@
 
-.textbox:focus~.inputTextLabel,
-.textbox:not(:placeholder-shown).textbox:not(:focus)~ .inputTextLabel{
+.inputBox:focus~.inputTextLabel,
+.inputBox:not(:placeholder-shown).inputBox:not(:focus)~ .inputTextLabel{
     @apply text-blue-500 transform -top-5 left-1 scale-75  bg-white px-4;
 }
 form{

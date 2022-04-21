@@ -7,21 +7,25 @@ import { data } from 'autoprefixer';
 
 let studentDummyData = [
     {
+        id: 1,
         studentImage: "/assets/img/studentTestimonial/student_1.png",
         studentName: "student 1",
         studentMessage: "Message from student 1 lorem lorem lorem lorem lorem"
     },
     {
+        id: 2,
         studentImage: "/assets/img/studentTestimonial/student_2.png",
         studentName: "student 2",
         studentMessage: "Message from student 2 lorem lorem lorem lorem lorem"
     },
     {
+        id: 3,
         studentImage: "/assets/img/studentTestimonial/student_3.png",
         studentName: "student 3",
         studentMessage: "Message from student 3 lorem lorem lorem lorem lorem"
     },
     {
+        id: 4,
         studentImage: "/assets/img/studentTestimonial/student_4.png",
         studentName: "student 4",
         studentMessage: "Message from student 4 lorem lorem lorem lorem lorem"
@@ -75,7 +79,7 @@ const StudentTestimonial = () => {
                 <StudentTestimonialItem studentData={studentDummyData} />
                 <StudentTestimonialItem studentData={studentDummyData} /> */}
 
-                {studentDummyData.map(data => <StudentTestimonialItem studentData={data} />)}
+                {studentDummyData.map(data => <StudentTestimonialItem key={data.id} studentData={data} />)}
 
 
 
