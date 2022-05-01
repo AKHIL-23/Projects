@@ -1,5 +1,7 @@
 import React from 'react'
 import InfoCarts from './InfoCarts'
+import TrendingTechLineChart from '../charts/TrendingTechLineChart'
+import IncomeAndExpePieChart from '../charts/IncomeAndExpePieChart'
 
 
 let infoCartData = [
@@ -42,12 +44,26 @@ const DashboardHomePage = () => {
     return (
         <>
 
-            <section className='h-screen' >
+            <section className='h-screen ' >
                 <div className='grid grid-cols-12 gap-5 container m-auto  ' >
                     {infoCartData.map(data => <InfoCarts key={data.id} data={data} />)}
+
                 </div>
 
-                <div>
+                <div className='bg-red-400  grid grid-cols-12 mt-5 p-5 space-y-5 '>
+                    <div className='col-span-12 sm:col-span-6'>
+                        <TrendingTechLineChart />
+
+                    </div>
+                    <div className='col-span-12 sm:col-span-6'>
+                        <IncomeAndExpePieChart />
+                    </div>
+
+
+
+
+
+
 
 
                 </div>

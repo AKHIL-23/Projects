@@ -17,7 +17,7 @@ const FormInput = (props) => {
     return (
         // {props.data.type == 'password' && eye == "eye-outline" ? props.data.type = 'text' : props.data.type == 'password'}
         <div className='relative  '>
-            <input type={props.data.type} name={props.data.name} id={props.data.id} placeholder=" " value={props.value} onChange={props.onChange} className={`bg-transparent w-full md:w-96   h-11  focus:ring-blue-500 rounded-md p-1 ring-2 focus:outline-none inputBox ${!props.data.error ? `ring-blue-300` : `ring-red-500`} `} />
+            <input type={props.data.type} name={props.data.name} id={props.data.id} placeholder=" " value={props.value} onChange={props.onChange} className={`bg-transparent w-full md:w-96   h-11  focus:ring-blue-500 rounded-md p-1 ring-2 focus:outline-none inputBox ${!props.data.error ? `ring-${props.ringclr}-300` : `ring-red-500`} `} />
 
             {props.data.name == `password` ? <ion-icon name={eye} class='absolute top-2 right-3 text-xl cursor-pointer' onClick={fun1}></ion-icon> : ""}
 

@@ -25,7 +25,7 @@ const SideBar = (props) => {
                 <ul >
                     <li>
                         <div className='flex items-center pl-4' onClick={() => { setOpen(!open) }}  >
-                            <i class="fa-solid fa-house"></i>
+                            <i className="fa-solid fa-house"></i>
                             <span >
                                 <Link to="/dashboard/"  >Dashboard</Link>
                             </span>
@@ -36,7 +36,7 @@ const SideBar = (props) => {
                         <div className='flex items-center pl-4' >
                             <i className="fa-solid fa-graduation-cap text-xl "></i>
 
-                            <Link to="#" onClick={() => { setStdMenu(!stdMenu) }}>  Students  <span><i class="fa-solid fa-angle-down"></i></span></Link>
+                            <Link to="#" onClick={() => { setStdMenu(!stdMenu) }}>  Students  <span><i className="fa-solid fa-angle-down"></i></span></Link>
                         </div>
 
                         <ul className={`${stdMenu ? 'block' : 'hidden'}`}>
@@ -50,7 +50,7 @@ const SideBar = (props) => {
                     <li>
                         <div className='flex items-center pl-4'>
                             <i className="fas fa-chalkboard-teacher text-xl"></i>
-                            <Link to="#" onClick={() => { setTecMenu(!tecMenu) }}> Teachers <span><i class="fa-solid fa-angle-down"></i></span></Link>
+                            <Link to="#" onClick={() => { setTecMenu(!tecMenu) }}> Teachers <span><i className="fa-solid fa-angle-down"></i></span></Link>
                         </div>
 
 
@@ -68,7 +68,7 @@ const SideBar = (props) => {
 
             <div className='flex items-center pl-4 text-white' onClick={() => { setOpen(!open) }}>
 
-                <i class="fa-solid fa-arrow-right-from-bracket text-xl p-5 cursor-pointer"></i>
+                <i className="fa-solid fa-arrow-right-from-bracket text-xl p-5 cursor-pointer"></i>
                 <Link to="" className={`${open ? "block" : "hidden"}`}> <h1>Logout</h1> </Link>
 
 

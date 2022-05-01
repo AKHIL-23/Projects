@@ -3,6 +3,8 @@
 const Validation = (values) => {
 
     let errors = {};
+
+    //Validation for email 
     if (!values.email) {
         errors.email = "email required "
         errors.submitStatus = false
@@ -20,6 +22,8 @@ const Validation = (values) => {
     else {
         errors.submitStatus = true
     }
+
+    //validation for password
     if (!values.password) {
         errors.password = "password required "
         errors.submitStatus = false
@@ -32,6 +36,8 @@ const Validation = (values) => {
     else {
         errors.submitStatus = true
     }
+
+    //Validation for contact number 
     if (!values.contactnumber) {
         errors.Mnumber = "Mobile Number required "
         errors.submitStatus = false

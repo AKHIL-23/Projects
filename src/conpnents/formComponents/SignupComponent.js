@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import Options from './Options';
 
-let statesName = [
-    'State Name',
+export let statesName = [
+
+    'choose your State Name',
     'Andhra Praesh',
     'Arunachal radesh',
     'Assam',
@@ -147,7 +148,7 @@ const SignupComponent = () => {
                     <div className='relative'>
                         <select name="" id="" className='bg-transparent w-full md:mt-4   h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' required>
 
-                            {statesName.map(data => <Options sn={data} />)}
+                            {statesName.map(data => <Options sn={data} clor={'green'} />)}
 
                         </select>
 

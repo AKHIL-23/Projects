@@ -1,13 +1,15 @@
 import React from 'react'
-import CourseOwlCarousel from "./../CourseOwlCarousel";
-import Content from "./../Content";
-import QueryForm from "./../QueryForm";
-import Footer from "./../Footer";
+import CourseOwlCarousel from "../commonUtils/CourseOwlCarousel";
+import Content from "../commonUtils/Content";
+import QueryForm from "../commonUtils/QueryForm";
+import Footer from "../commonUtils/Footer";
+import Navbar from '../commonUtils/Navbar';
 
 const About = () => {
     return (
         <>
             <section>
+                <Navbar />
                 <div className='mt-12 relative'>
                     <div className=' absolute top-12 left-3 sm:top-36 2xl:left-6'>
                         <h1 className='text-2xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl text-blue-500 uppercase '>Together  </h1>

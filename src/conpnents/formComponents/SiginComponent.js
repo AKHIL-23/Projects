@@ -69,7 +69,7 @@ const SignComponent = () => {
             <div className=' h-screen md:grid md:place-content-center p-4'>
                 <form action="" id='signin-form' onSubmit={handleSubmit} autoComplete="off" className=' space-y-6  md:space-y-9 p-5 md:p-11
              border  flex flex-col md:items-center md:justify-cente rounded-xl border-none ring-2 '>
-                    {inputs.map(data => <FormInput key={data.id} data={data} value={values[inputs.name]} onChange={onChange} />)}
+                    {inputs.map(data => <FormInput key={data.id} data={data} value={values[inputs.name]} onChange={onChange} ringclr="blue" />)}
 
                     {/* Checkbox jsx  */}
                     <div className='  w-full space-x-1'>

@@ -4,7 +4,7 @@ function Options(props) {
 
 
     return (
-        <option disabled={props.sn == "State Name"} value="" className='bg-green-400' > {props.sn}</option >
+        <option disabled={props.sn == "choose your State Name"} value={props.sn} className={`bg-${props.clor}-400`} > {props.sn}</option >
     )
 }
 
