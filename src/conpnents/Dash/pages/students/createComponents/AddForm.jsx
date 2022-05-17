@@ -9,7 +9,7 @@ const AddForm = () => {
     email: "",
     contactNumber: "",
     age: "",
-    gender: "test",
+    gender: "",
     address: "",
     status: "",
     city: "",
@@ -39,9 +39,7 @@ const AddForm = () => {
     e.preventDefault();
 
     if (error.submitStatus) {
-      // console.log(values);
-      // e.target.reset();
-      // http://localhost:8000/api/zn/addstudent
+
       fetch('http://localhost:8000/api/zn/addstudent', {
         method: 'POST',
         body: JSON.stringify(values),
@@ -51,7 +49,7 @@ const AddForm = () => {
 
       }).then(res => res.json())
         .then(res => setTemp(res.message));
-      // .then(res => console.log(res));
+
 
     }
 

@@ -26,7 +26,7 @@ const ListAllStudents = () => {
     fetch('http://localhost:8000/api/zn/listallstudents').then((result) => {
       result.json().then((res) => {
         setStudentsRecords(res);
-        console.log(res)
+        // console.log(res)
 
 
       })

@@ -1,6 +1,6 @@
 
 import './App.css';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 // public components
 import Home from './conpnents/pages/Home';
 import SigninPage from './conpnents/formComponents/SigninPage';
@@ -19,12 +19,17 @@ import Dashboard from './conpnents/Dash/pages/Dashboard';
 import DashHome from './conpnents/Dash/pages/DashHome'
 import AddStudents from './conpnents/Dash/pages/students/AddStudents'
 import ListAllStudents from './conpnents/Dash/pages/students/ListAllStudents';
+import EditStudent from './conpnents/Dash/pages/students/EditStudent';
+
 
 
 function App() {
+  const location = useLocation();
+  console.log(location.pathname)
   return (
     <>
       {/* <Navbar /> */}
+
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -46,12 +51,14 @@ function App() {
           <Route exact path="/dashboard" element={<DashHome />} />
           <Route exact path="/dashboard/addstudent" element={<AddStudents />} />
           <Route exact path="/dashboard/listallstudents" element={<ListAllStudents />} />
+          <Route exact path="/dashboard/listallstudents/edit/:_id" element={<EditStudent />} />
 
         </Route>
 
         {/* 404 page not found page route  */}
         <Route path='*' element={<PageNotFound />} />
       </Routes>
+
 
     </>
   );

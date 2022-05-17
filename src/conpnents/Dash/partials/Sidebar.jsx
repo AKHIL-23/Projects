@@ -103,7 +103,7 @@ function Sidebar({
                   </div>
                 </NavLink>
               </li>
-             
+
               {/* Students */}
               <SidebarLinkGroup activecondition={pathname.includes('ecommerce')} >
                 {(handleClick, open) => {
@@ -148,8 +148,8 @@ function Sidebar({
                             <NavLink end to="/" className="block text-slate-400 hover:text-black transition duration-150 truncate">
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">other</span>
                             </NavLink>
-                          </li>                          
-                        
+                          </li>
+
                         </ul>
                       </div>
                     </React.Fragment>
@@ -213,7 +213,7 @@ function Sidebar({
                   );
                 }}
               </SidebarLinkGroup>
-            
+
               {/* Calendar */}
               <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0  hover:border-l-8 border-l-blue-500 hover:bg-slate-100 transition-all  ${pathname.includes('calendar') && 'bg-slate-900'}`}>
                 <NavLink end to="/" className={`block text-black hover:text-blue-500 truncate transition duration-150 ${pathname.includes('calendar') && 'hover:text-black'}`}>
@@ -226,14 +226,14 @@ function Sidebar({
                   </div>
                 </NavLink>
               </li>
-              
-           
+
+
               {/* Utility */}
               <SidebarLinkGroup activecondition={pathname.includes('utility')}>
                 {(handleClick, open) => {
                   return (
                     <React.Fragment>
-                      <a href="#0" className={` hover:border-l-8 border-l-blue-500 hover:bg-slate-100 transition-all px-3 py-2 block text-black hover:text-blue-500 truncate transition duration-150 ${pathname.includes('utility') && 'hover:text-black'}`} onClick={(e) => { e.preventDefault(); sidebarExpanded ? handleClick() : setSidebarExpanded(true) }}>
+                      <a href="#0" className={` hover:border-l-8 border-l-blue-500 hover:bg-slate-100 transition-all px-3 py-2 block text-black hover:text-blue-500 truncate  duration-150 ${pathname.includes('utility') && 'hover:text-black'}`} onClick={(e) => { e.preventDefault(); sidebarExpanded ? handleClick() : setSidebarExpanded(true) }}>
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
                             <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
