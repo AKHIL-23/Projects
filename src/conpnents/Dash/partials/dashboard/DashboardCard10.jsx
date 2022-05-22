@@ -9,30 +9,28 @@ import Image03 from '../../images/user-36-07.jpg';
 // import Image05 from '../../images/user-36-09.jpg';
 
 
+// Redux
+import { useSelector, useDispatch } from 'react-redux'
+import { listAllStudents, updateStudent } from './../../../../state/features/studentSlice'
+
 function DashboardCard10(props) {
+  // redux dispatch 
+  const dispatch = useDispatch()
 
-  // const records = [...props.records];
   const col = [...props.columns]
-  const [studentRecords, setStudentsRecords] = useState([]);
   const location = useLocation()
-
-  // API CALL TO FETCH ALL STUDENT RECORD 
-  useEffect(() => {
-    fetch('http://localhost:8000/api/zn/listallstudents').then((result) => {
-      result.json().then((res) => {
-        setStudentsRecords(res);
-        // console.log(res)
+  const records = props.records;
 
 
-      })
-    })
-  }, [])
+
 
   const deleteRecord = async (userID, name) => {
-    console.log(userID);
+
+    // delete record in front end
     if (window.confirm(`Are you sure ! you want to delete "${name}" related all records `)) {
-      const Newrecords = studentRecords.filter((studentRecords) => { return studentRecords._id !== userID });
-      setStudentsRecords(Newrecords);
+      const Newrecords = records.filter((records) => { return records._id !== userID });
+      dispatch(listAllStudents(Newrecords))
+      // delete record at backend 
       fetch(`http://localhost:8000/api/zn/delete/${userID}`, {
         method: 'DELETE'
 
@@ -70,7 +68,7 @@ function DashboardCard10(props) {
             {/* Table body */}
             <tbody className="text-sm divide-y divide-slate-100">
               {
-                studentRecords.map(record => {
+                records.map(record => {
                   return (
                     <tr key={record._id} className='hover:bg-slate-200'>
                       <td className="p-2 whitespace-nowrap flex items-center ">
@@ -112,6 +110,7 @@ function DashboardCard10(props) {
                       <td className="p-2 whitespace-nowrap">
                         <div className="text-md text-center space-x-3">
                           <NavLink end to={`${location.pathname}/edit/${record._id}`}>
+                            {/* <span><i className="fa-solid fa-user-pen text-blue-500 cursor-pointer" onClick={() => dispatch(updateStudent(record))}></i></span> */}
                             <span><i className="fa-solid fa-user-pen text-blue-500 cursor-pointer"></i></span>
                           </NavLink >
 

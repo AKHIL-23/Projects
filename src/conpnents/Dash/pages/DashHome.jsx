@@ -16,6 +16,7 @@ import DashboardCard09 from '../partials/dashboard/DashboardCard09';
 import DashboardCard11 from '../partials/dashboard/DashboardCard11';
 import DashboardCard12 from '../partials/dashboard/DashboardCard12';
 import DashboardCard13 from '../partials/dashboard/DashboardCard13';
+import ListAllStudents from './students/ListAllStudents';
 
 const DashHome = () => {
   return (
@@ -64,6 +65,7 @@ const DashHome = () => {
         <DashboardCard06 />
         {/* Table (Top Channels) */}
         <DashboardCard07 />
+        <DashboardCard07 />
         {/* Line chart (Sales Over Time) */}
         <DashboardCard08 />
         {/* Stacked bar chart (Sales VS Refunds) */}
@@ -75,7 +77,11 @@ const DashHome = () => {
         {/* Card (Recent Activity) */}
         <DashboardCard12 />
         {/* Card (Income/Expenses) */}
-        <DashboardCard13 />
+
+
+        <div className="col-span-full xl:col-span-6 bg-red-500 shadow-lg rounded-sm border border-slate-200 h-96" style={{ position: 'relative', overflow: 'scroll' }}>
+          <ListAllStudents />
+        </div>
 
       </div>
 

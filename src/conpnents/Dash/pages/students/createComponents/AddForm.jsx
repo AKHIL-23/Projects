@@ -1,8 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { statesName } from '../../../../formComponents/SignupComponent'
 import Options from '../../../../formComponents/Options'
 import Validation from '../validateStudentFrontend'
-const AddForm = () => {
+import { useParams, useLocation } from 'react-router-dom';
+
+
+import { useSelector } from 'react-redux'
+
+const AddForm = (props) => {
+  let param = useParams();
+  const location = useLocation();
+
+  // Redux 
+  const studentRecord = useSelector((state) => state.student.student);
 
   const [values, setValues] = useState({
     name: "",
@@ -14,9 +24,12 @@ const AddForm = () => {
     status: "",
     city: "",
     state: "",
-
-
   });
+  useEffect(() => {
+    setValues(studentRecord)
+  }, [studentRecord])
+
+
 
   const onChange = (event) => {
 
@@ -33,33 +46,51 @@ const AddForm = () => {
   }
 
   //Response Message 
-  const [temp, setTemp] = useState("here!")
+  const [temp, setTemp] = useState()
   const updateHandler = (e) => {
 
     e.preventDefault();
 
     if (error.submitStatus) {
+      if (location.pathname === '/dashboard/addstudent') {
+        // Add New student  API Call 
+        fetch('http://localhost:8000/api/zn/addstudent', {
+          method: 'POST',
+          body: JSON.stringify(values),
+          headers: {
+            'Content-Type': 'application/json'
+          }
 
-      fetch('http://localhost:8000/api/zn/addstudent', {
-        method: 'POST',
-        body: JSON.stringify(values),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-
-      }).then(res => res.json())
-        .then(res => setTemp(res.message));
-
+        }).then(res => res.json())
+          .then(res => setTemp(res.message));
+      }
+      else {
+        // Edit student API cal 
+        fetch(`http://localhost:8000/api/zn/edit/${param._id}`, {
+          method: 'PUT',
+          body: JSON.stringify(values),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(res => res.json())
+          .then(res => setTemp(res.message));
+      }
 
     }
 
 
+
+
+
   }
+
 
   return (
     <div className='bg-white rounded-md h-full shadow-xl'>
       <div className='py-3 px-4'>
-        <h1 className='text-lg text-slate-400'> Account Details</h1>
+        <h1 className='text-lg text-slate-400'> Account Details {values.name}</h1>
+
       </div>
       <hr />
       <form action="" className=' shadow-none py-3 px-4 ' onSubmit={updateHandler}>
@@ -115,7 +146,7 @@ const AddForm = () => {
 
         <div className='mt-3'>
           <label htmlFor="" className='text-sm text-slate-500' >Address</label>
-          <input type="text" className='w-full border-2 p-2 rounded-md' name='address' onChange={onChange} />
+          <input type="text" className='w-full border-2 p-2 rounded-md' name='address' value={values.address} onChange={onChange} />
           <p className='text-xs text-red-600'>{error.address}</p>
         </div>
 
@@ -150,7 +181,7 @@ const AddForm = () => {
         </div>
         <h1>{temp}</h1>
 
-        <button className='bg-blue-400 hover:bg-blue-500 text-white py-1 px-2 rounded-md mt-5' type='submit' onClick={validateAll}>Update Account</button>
+        <button className='bg-blue-400 hover:bg-blue-500 text-white py-1 px-2 rounded-md mt-5' type='submit' onClick={validateAll}>{props.btnText}</button>
 
       </form>
     </div>
