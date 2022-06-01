@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Options from './Options';
+import Validation from './ValidationFunctions'
 
 export let statesName = [
 
@@ -46,143 +47,90 @@ export let statesName = [
 ];
 
 const SignupComponent = () => {
+    const [gender, setGender] = useState("");
+    const [values, setValues] = useState({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        contactNumber: "",
+        role: "",
+        gender: "",
 
-    let [name, setName] = useState("");
-    let [email, emailState] = useState("");
-    let [pass, passState] = useState("");
-    let [Conditions, conditionsState] = useState();
-    let [courseName, setCourse] = useState();
-    let [contactNumber, setContactNumber] = useState();
-    let [cityName, setCittyName] = useState();
-    let [radiobtn, setRadiobtn] = useState()
+    });
 
-    const nameChange = (event) => {
-        setName(event.target.value);
+    const ChangeHandler = (event) => {
+        setValues({ ...values, [event.target.name]: event.target.value });
     }
+    const [error, setError] = useState({});
 
-    const emailChange = (event) => {
-        emailState(event.target.value);
+    const validatorAll = () => {
+        setError(Validation(values))
 
-    }
-    const passChange = (event) => {
-
-        passState(event.target.value);
-
-    }
-    const checkboxChange = (event) => {
-
-        conditionsState(event.checked);
 
     }
-    const courseNameChange = (event) => {
-
-        setCourse(event.target.value);
-
-    }
-    const contactNumberChanger = (event) => {
-
-        setContactNumber(event.target.value);
-
-    }
-    const cityNameChange = (event) => {
-
-        setCittyName(event.target.value);
-
-    }
-    const radioHandle = (event) => {
-        setRadiobtn(event.checked)
-
-    }
-
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        setName("");
-        emailState("");
-        passState("");
-        conditionsState(false);
-        setCourse("");
-        setContactNumber("");
-        setCittyName("");
-        setRadiobtn(false);
 
     }
     return (
         <>
-            <div className=''>
-                <form action="" onSubmit={handleSubmit} className='m-5  space-y-2 p-4    border   rounded-xl border-none ring-2  '>
-                    <div className='grid grid-cols-12'>
-                        <div className='col-span-12 space-y-6 md:col-span-6 md:px-2 '>
-                            <div className='relative  '>
-                                <input type="text" id="nameFeild" placeholder=" " value={name} onChange={nameChange} className='bg-transparent w-full   h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' required />
-                                <label htmlFor="nameFeild" className=' absolute top-2 left-5 cursor-text inputTextLabel transition duration-200 text-gray-500'>Name</label>
-                            </div>
-                            <div className='relative  '>
-                                <input type="text" id="emailField" placeholder=" " value={email} onChange={emailChange} className='bg-transparent w-full  h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' required />
-                                <label htmlFor="emailField" className=' absolute top-2 left-5 cursor-text inputTextLabel transition duration-200 text-gray-500'>email</label>
-                            </div>
-                            <div className='relative'>
-                                <input type="password" id="password" placeholder=" " value={pass} onChange={passChange} className='bg-transparent w-full  h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' required />
-                                <label htmlFor="password" className=' absolute top-2 left-5 cursor-text inputTextLabel transition duration-200 text-gray-500'>password</label>
-                            </div>
+            <div className='p-4'>
+                <form action="" onSubmit={handleSubmit} className='border rounded-md border-none ring-2 p-7  '>
 
-
+                    <div className='grid grid-cols-12 gap-4 '>
+                        <div className='relative col-span-12 md:col-span-6 xl:col-span-4 mb-4'>
+                            <input type="text" id="nameFeild" placeholder=" " name="username" value={values.username} onChange={ChangeHandler} className='bg-transparent w-full   h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' required />
+                            <label htmlFor="nameFeild" className=' absolute top-2 left-5 cursor-text inputTextLabel transition duration-200 text-gray-500'>Name</label>
+                            <h1 className='text-red-600 p-2  w-80 text-sm errMsg'>{error.username}</h1>
                         </div>
-                        <div className='col-span-12 space-y-6 md:col-span-6 md:px-2'>
-
-                            <div className='relative mt-6 md:mt-0  '>
-                                <input type="text" id="courseName" placeholder=" " value={courseName} onChange={courseNameChange} className='bg-transparent w-full   h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' required />
-                                <label htmlFor="courseName" className=' absolute top-2 left-5 cursor-text inputTextLabel transition duration-200 text-gray-500'>Course Name</label>
-                            </div>
-                            <div className='relative'>
-                                <input type="number" id="contact-number" placeholder=" " value={contactNumber} onChange={contactNumberChanger} className='bg-transparent w-full  h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' required />
-                                <label htmlFor="contact-number" className=' absolute top-2 left-5 cursor-text inputTextLabel transition duration-200 text-gray-500'>Contact Number</label>
-                            </div>
-
-                            <div className='relative  '>
-                                <input type="text" id="city" placeholder=" " value={cityName} onChange={cityNameChange} className='bg-transparent w-full   h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' required />
-                                <label htmlFor="city" className=' absolute top-2 left-5 cursor-text inputTextLabel transition duration-200 text-gray-500'>City</label>
-                            </div>
+                        <div className='relative col-span-12 md:col-span-6 xl:col-span-4  mb-4'>
+                            <input type="text" id="emailField" placeholder=" " name="email" value={values.email} onChange={ChangeHandler} className='bg-transparent w-full  h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' required />
+                            <label htmlFor="emailField" className=' absolute top-2 left-5 cursor-text inputTextLabel transition duration-200 text-gray-500'>email</label>
+                            <h1 className='text-red-600 p-2  w-80 text-sm errMsg'>{error.email}</h1>
                         </div>
-                    </div>
-                    <div className='relative'>
-                        <select name="" id="" className='bg-transparent w-full md:mt-4   h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' required>
+                        <div className='relative col-span-12 md:col-span-6 xl:col-span-4 mb-4'>
+                            <input type="password" id="password" placeholder=" " name="password" value={values.password} onChange={ChangeHandler} className='bg-transparent w-full  h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' required />
+                            <label htmlFor="password" className=' absolute top-2 left-5 cursor-text inputTextLabel transition duration-200 text-gray-500'>password</label>
+                            <h1 className='text-red-600 p-2  w-80 text-sm errMsg'>{error.password
+                            }</h1>
+                        </div>
+                        <div className='relative col-span-12 md:col-span-6 xl:col-span-4 mb-4'>
+                            <input type="password" id="confirmpassword" placeholder=" " name="confirmPassword" value={values.confirmPassword} onChange={ChangeHandler} className='bg-transparent w-full  h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' required />
+                            <label htmlFor="confirmpassword" className=' absolute top-2 left-5 cursor-text inputTextLabel transition duration-200 text-gray-500'> confirm Password</label>
+                            <h1 className='text-red-600 p-2  w-80 text-sm errMsg'>{error.confirmPassword}</h1>
+                        </div>
+                        <div className='relative col-span-12 md:col-span-6 xl:col-span-4 mb-4'>
+                            <input type="number" id="contact-number" placeholder=" " name="contactNumber" value={values.contactNumber} onChange={ChangeHandler} className='bg-transparent w-full  h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' required />
+                            <label htmlFor="contact-number" className=' absolute top-2 left-5 cursor-text inputTextLabel transition duration-200 text-gray-500'>Contact Number</label>
+                            <h1 className='text-red-600 p-2  w-80 text-sm errMsg'>{error.contactNumber}</h1>
+                        </div>
+                        <div className='relative col-span-12 md:col-span-6 xl:col-span-4 mb-4'>
+                            <select name="role" id="" className='bg-transparent w-full  h-11 border-none rounded-md p-1 ring-2 focus:border-blue-500 focus:ring-blue-500  focus:outline-none textbox  ' value={values.role} required>
 
-                            {statesName.map(data => <Options sn={data} clor={'green'} />)}
-
-                        </select>
-
-                    </div>
-
-
-
-
-
-                    <div className='w-full pt-4'>
-
-                        <input type="radio" id='male' name='gender' className='mx-3' checked={radiobtn} onChange={radioHandle} /><label htmlFor="male">Male</label>
-                        <input type="radio" id='female' name='gender' className='mx-3' checked={radiobtn} onChange={radioHandle} /><label htmlFor="female">Female</label>
-
-                    </div>
-
-
-                    {/* Checkbox jsx  */}
-                    <div className='  w-full space-x-1'>
-                        <input type="checkbox" id='term' onChange={checkboxChange} checked={Conditions} className='w-10 h-4 border-none ' required />
-                        <label htmlFor="term">Accept Terms and Conditions.</label>
+                                <option value="Role_title">Select Your Role</option>
+                                <option value="Faculty">Faculty</option>
+                                <option value="Student">Student</option>
+                            </select>
+                        </div>
 
                     </div>
 
+                    <div className='w-full my-5'>
 
-                    <div className='flex justify-center py-3 '>
-                        <button className='active:bg-blue-900 bg-blue-500 hover:bg-blue-600   px-3 py-2 rounded-md text-base  text-white transform hover:-translate-y-1 hover:scale-110 transition duration-500 ease-in-out   cursor-pointer font-bold ' type="submit">Sign up</button>
+                        <input type="radio" id='male' name='gender' className='mx-3' checked={gender} onChange={() => { setGender("Male") }} /><label htmlFor="male">Male</label>
+                        <input type="radio" id='female' name='gender' className='mx-3' checked={gender} onChange={() => { setGender("Female") }} /><label htmlFor="female">Female</label>
+
                     </div>
 
+
+
+
+                    <button className='active:bg-blue-900 bg-blue-500 hover:bg-blue-600   px-3 py-2 mb-5 rounded-md text-base  text-white transform hover:-translate-y-1 hover:scale-110 transition duration-500 ease-in-out   cursor-pointer font-bold ' type="submit" onClick={validatorAll}>Sign up</button>
 
                     <div className=' w-full relative border-t-4  space-y-4 py-5' >
-                        {/* <div>
-                            <p className='absolute -top-5 left-1/2 lg:left-42 px-3 xl:left-40 bg-white'>or</p>
-                        </div> */}
+
                         <p className='absolute -top-3 left-1/2 bg-white px-4'>OR</p>
 
                         <div className=' text-center py-3   rounded-md cursor-pointer hover:bg-blue-100 ring-1 '>

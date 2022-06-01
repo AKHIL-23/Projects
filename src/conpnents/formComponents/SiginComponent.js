@@ -15,6 +15,7 @@ const SignComponent = () => {
 
     const [error, setError] = useState({});
 
+
     let inputs = [
         {
             id: 1,
@@ -35,19 +36,12 @@ const SignComponent = () => {
         setValues({ ...values, [event.target.name]: event.target.value });
 
     }
-
-
-
     const validatorAll = () => {
         setError(Validation(values))
-
 
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-
-
-
 
         // const data = new FormData(event.currentTarget);
         // let actualdata = {
@@ -55,20 +49,13 @@ const SignComponent = () => {
         //     password: data.get('password')
         // }
         // console.log(actualdata);
-
-
-
     }
-
-
-
-
 
     return (
         <>
-            <div className=' h-screen md:grid md:place-content-center p-4'>
-                <form action="" id='signin-form' onSubmit={handleSubmit} autoComplete="off" className=' space-y-6  md:space-y-9 p-5 md:p-11
-             border  flex flex-col md:items-center md:justify-cente rounded-xl border-none ring-2 '>
+            <div className=' h-screen  flex justify-center items-start xl:items-center pt-4  '>
+                <form action="" id='signin-form' onSubmit={handleSubmit} autoComplete="off" className='space-y-2 md:space-y-4 p-4 md:p-11
+                    border rounded-xl border-none ring-2 '>
                     {inputs.map(data => <FormInput key={data.id} data={data} value={values[inputs.name]} onChange={onChange} ringclr="blue" />)}
 
                     {/* Checkbox jsx  */}

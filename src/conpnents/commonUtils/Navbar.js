@@ -2,8 +2,12 @@ import React from 'react';
 import './Navbar.css';
 import { Link } from "react-router-dom";
 
+// auth Token 
+import { getToken } from './../../state/LocalStorageService.js'
+
 
 const Navbar = () => {
+    const token = getToken()
     return (
 
         <>
@@ -28,14 +32,22 @@ const Navbar = () => {
                         <Link to="/ContactUs">
                             <li className='hover:bg-blue-500 px-5 py-2 sm:rounded-full text-sm  sm:text-black text-blue-400 hover:text-white transform hover:-translate-y-1 hover:scale-105 transition duration-500 ease-in-out  cursor-pointer font-normal'>Contact</li>
                         </Link>
-                        <Link to="/signin">
+                        {token ? <Link to="/dashboard">
+                            <li className='hover:bg-blue-500 px-5 py-2 sm:rounded-full text-sm sm:text-black text-blue-400  hover:text-white transform hover:-translate-y-1 hover:scale-105 transition duration-500 ease-in-out  cursor-pointer font-normal'>
+                                <span className='mr-2'>Dashboard</span>
+                                {/* <i className="fa-solid fa-circle-user text-gray-400 text-xl ml-1   "></i> */}
+
+
+                            </li>
+                        </Link> : <Link to="/signin">
                             <li className='hover:bg-blue-500 px-5 py-2 sm:rounded-full text-sm sm:text-black text-blue-400  hover:text-white transform hover:-translate-y-1 hover:scale-105 transition duration-500 ease-in-out  cursor-pointer font-normal'>
                                 <span className='mr-2'>Sign in</span>
                                 <i className="fa-solid fa-circle-user text-gray-400 text-xl ml-1   "></i>
 
 
                             </li>
-                        </Link>
+                        </Link>}
+
 
 
 

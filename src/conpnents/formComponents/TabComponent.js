@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import "./TabComponent.css"
-import SignComponent from './SiginComponent';
-import SignupComponent from './SignupComponent';
+// import SignComponent from './SiginComponent';
+// import SignupComponent from './SignupComponent';
+import RegisterUser from './RegisterUser';
+import Login from './Login';
 
 
 const TabComponent = () => {
@@ -26,10 +28,13 @@ const TabComponent = () => {
                 <li className={activeTab === "tab1" ? "active border-b-4 border-blue-500  text-md" : " text-md "} onClick={handleTab1}>Sign in</li>
                 <li className={activeTab === "tab2" ? "active border-b-4 border-blue-500   text-md" : " text-md "} onClick={handleTab2}>Sign up</li>
             </ul>
-            <div className="outlet bg-white h-screen  ">
-                {activeTab === "tab1" ? <SignComponent /> : <SignupComponent />}
+            <div className="outlet bg-white flex justify-center items-center ">
+                {/* {activeTab === "tab1" ? <SignComponent /> : <SignupComponent />} */}
+                {activeTab === "tab1" ? <Login /> : <RegisterUser />}
+
 
             </div>
+
 
 
 

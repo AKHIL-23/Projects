@@ -46,7 +46,7 @@ function App() {
           <Route exact path='/dashboard/listallstudents' element={<ListAllStudents />} />
 
         </Route> */}
-        {/*  */}
+        {/*Admin Dashboard features  */}
         <Route exact path="/dashboard" element={<Dashboard />} >
           <Route exact path="/dashboard" element={<DashHome />} />
           <Route exact path="/dashboard/addstudent" element={<AddStudents />} />
