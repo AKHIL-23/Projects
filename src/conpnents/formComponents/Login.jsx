@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import loginValidation from './loginValidation';
 import { useNavigate } from "react-router-dom";
 import { storeToken } from '../../state/LocalStorageService';
 
+// REDUX AUTHTOKEN SLICE 
+import { useDispatch } from 'react-redux';
+import { setAuthToken } from '../../state/features/AuthTokenSlice';
+import { getToken } from '../../state/LocalStorageService';
+
 const Login = () => {
+    const dispatch = useDispatch();
     let navigate = useNavigate();
     const [values, setValues] = useState({
         username: "",
@@ -25,6 +31,7 @@ const Login = () => {
     // Temp solution to clear form 
     const clearForm = async (e) => {
         await setValues({
+            username: "",
             email: "",
             password: "",
             role: "",
@@ -53,11 +60,12 @@ const Login = () => {
             setTemp(json)
 
 
-            console.log(json);
+            // console.log(json);
             if (json.status) {
 
                 storeToken(json.authToken)
-                await navigate("/dashboard");
+                dispatch(setAuthToken(json.authToken))
+                navigate("/dashboard");
                 clearForm(e)
 
             }
@@ -79,6 +87,14 @@ const Login = () => {
         }
 
     }
+
+    // set auth token in redux store's authtoken slice 
+
+    const token = getToken()
+    useEffect(() => {
+        dispatch(setAuthToken(token))
+        console.log(`login authtoken ${token}`)
+    }, [token, dispatch])
     return (
         <>
             <div className='bg-white rounded-md h-full shadow-xl w-5/6 mt-4'>

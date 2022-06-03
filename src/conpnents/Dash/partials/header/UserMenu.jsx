@@ -5,7 +5,14 @@ import Transition from '../../utils/Transition';
 import UserAvatar from '../../images/user-36-01.jpg';
 import { removeToken } from '../../../../state/LocalStorageService';
 
+// REDUX STORE 
+import { useSelector, useDispatch } from 'react-redux'
+import { clearFetchRecord, fetchUserRecord } from '../../../../state/features/UserSlice';
+
 function UserMenu() {
+  // REDUX USER STORE 
+  const dispatch = useDispatch();
+  const logedUserData = useSelector((state) => state.user.user)
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -32,6 +39,14 @@ function UserMenu() {
     return () => document.removeEventListener('keydown', keyHandler);
   });
 
+
+  // Code to clear user store data at logout 
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(clearFetchRecord())
+  //   };
+  // }, [dispatch])
+
   return (
     <div className="relative inline-flex">
       <button
@@ -43,12 +58,13 @@ function UserMenu() {
       >
         <img className="w-8 h-8 rounded-full" src={UserAvatar} width="32" height="32" alt="User" />
         <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-800">Acme Inc.</span>
+          {/* <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-800">{logedUserData.username}</span> */}
           <svg className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" viewBox="0 0 12 12">
             <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
           </svg>
         </div>
       </button>
+
 
       <Transition
         className="origin-top-right z-10 absolute top-full right-0 min-w-44 bg-white border border-slate-200 py-1.5 rounded shadow-lg overflow-hidden mt-1"
@@ -83,7 +99,7 @@ function UserMenu() {
               <Link
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
                 to="/signin"
-                onClick={() => { removeToken('authToken') }}
+                onClick={() => { dispatch(clearFetchRecord()); removeToken('authToken') }}
               >
                 Sign Out
               </Link>
