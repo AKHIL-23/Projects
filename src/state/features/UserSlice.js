@@ -7,15 +7,7 @@ const UserSlice = createSlice({
     name: 'user',
     initialState: {
 
-        user: {
-            username: "",
-            email: "",
-            contactNumber: "",
-            password: "",
-            confirmPassword: "",
-            role: "",
-
-        },
+        user:{},
     },
     reducers: {
 
@@ -24,15 +16,7 @@ const UserSlice = createSlice({
 
         },
         clearFetchRecord: (state) => {
-            state.user = {
-                username: "",
-                email: "",
-                contactNumber: "",
-                password: "",
-                confirmPassword: "",
-                role: "",
-
-            };
+            state.user = {};
         },
 
 

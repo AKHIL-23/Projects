@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUserRecord } from '../features/UserSlice';
 const GetLogedUser = async (token) => {
@@ -11,10 +12,9 @@ const GetLogedUser = async (token) => {
         }
     });
     const json = await response.json()
-    console.log(`getLogedUser function `, json.payload);
+    console.log(`getLogedUser function `, json);
 
     dispatch(fetchUserRecord(json.payload))
-
 
 
 }
