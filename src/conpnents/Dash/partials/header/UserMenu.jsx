@@ -8,7 +8,8 @@ import { removeToken } from '../../../../state/LocalStorageService';
 // REDUX STORE 
 import { useSelector, useDispatch } from 'react-redux'
 import { clearFetchRecord, fetchUserRecord } from '../../../../state/features/UserSlice';
-
+import { clearAuthToken } from '../../../../state/features/AuthTokenSlice';
+import { getToken } from '../../../../state/LocalStorageService';
 function UserMenu() {
   // REDUX USER STORE 
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ function UserMenu() {
   //     dispatch(clearFetchRecord())
   //   };
   // }, [dispatch])
+
 
   return (
     <div className="relative inline-flex">
@@ -99,7 +101,17 @@ function UserMenu() {
               <Link
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
                 to="/signin"
-                onClick={() => { dispatch(clearFetchRecord()); removeToken('authToken') }}
+
+                onClick={() => {
+                  removeToken('authToken')
+
+                  dispatch(clearFetchRecord());
+                  dispatch(clearAuthToken())
+
+
+                }}
+
+
               >
                 Sign Out
               </Link>

@@ -9,8 +9,10 @@ import { setAuthToken } from '../../state/features/AuthTokenSlice';
 import { getToken } from '../../state/LocalStorageService';
 
 const Login = () => {
-    const dispatch = useDispatch();
     let navigate = useNavigate();
+    const dispatch = useDispatch();
+
+
     const [values, setValues] = useState({
         username: "",
         email: "",
@@ -65,8 +67,8 @@ const Login = () => {
 
                 storeToken(json.authToken)
                 dispatch(setAuthToken(json.authToken))
-                navigate("/dashboard");
-                clearForm(e)
+
+                // navigate("/dashboard");
 
             }
 
@@ -89,12 +91,13 @@ const Login = () => {
     }
 
     // set auth token in redux store's authtoken slice 
+    // let token = getToken()
 
-    const token = getToken()
-    useEffect(() => {
-        dispatch(setAuthToken(token))
-        console.log(`login authtoken ${token}`)
-    }, [token, dispatch])
+    // useEffect(() => {
+
+
+    // }, [token, dispatch])
+
     return (
         <>
             <div className='bg-white rounded-md h-full shadow-xl w-5/6 mt-4'>

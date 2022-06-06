@@ -11,7 +11,9 @@ const AuthTokenSlice = createSlice({
     reducers: {
 
         setAuthToken: (state, action) => {
+
             state.token = action.payload;
+
 
         },
         clearAuthToken: (state) => {

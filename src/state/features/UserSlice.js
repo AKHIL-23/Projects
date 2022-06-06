@@ -7,7 +7,10 @@ const UserSlice = createSlice({
     name: 'user',
     initialState: {
 
-        user:{},
+        user: {
+
+        }
+        ,
     },
     reducers: {
 
@@ -16,7 +19,9 @@ const UserSlice = createSlice({
 
         },
         clearFetchRecord: (state) => {
-            state.user = {};
+            state.user = {
+
+            };
         },
 
 

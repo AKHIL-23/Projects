@@ -12,8 +12,8 @@ const RegisterUser = () => {
 
 
     // Redux 
-    const dispatch = useDispatch();
-    const userRecord = useSelector((state) => state.user.user);
+    // const dispatch = useDispatch();
+    // const userRecord = useSelector((state) => state.user.user);
 
     const [values, setValues] = useState({
         username: "",
@@ -24,9 +24,9 @@ const RegisterUser = () => {
         role: "",
         gender: "",
     });
-    useEffect(() => {
-        setValues(userRecord)
-    }, [userRecord])
+    // useEffect(() => {
+    //     setValues(userRecord)
+    // }, [userRecord])
 
 
 
@@ -39,14 +39,14 @@ const RegisterUser = () => {
     // Form validation logic
     const validateAll = async () => {
         await setError(Validation(values))
-        dispatch(fetchUserRecord(values))
+        // dispatch(fetchUserRecord(values))
 
     }
-    useEffect(() => {
-        return () => {
-            dispatch(clearFetchRecord())
-        };
-    }, [])
+    // useEffect(() => {
+    //     return () => {
+    //         dispatch(clearFetchRecord())
+    //     };
+    // }, [])
 
     //Response Message 
     const [temp, setTemp] = useState({})
@@ -85,8 +85,8 @@ const RegisterUser = () => {
             console.log(json);
             if (json.status) {
 
-                storeToken(json.authToken)
-                await navigate("/dashboard");
+                // storeToken(json.authToken)
+                // await navigate("/dashboard");
                 clearForm(e)
 
             }
