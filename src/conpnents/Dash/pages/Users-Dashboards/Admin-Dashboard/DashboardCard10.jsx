@@ -4,14 +4,15 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 // import Image01 from '../../images/user-36-05.jpg';
 // import Image02 from '../../images/user-36-06.jpg';
-import Image03 from '../../images/user-36-07.jpg';
+// import Image03 from '../../images/user-36-07.jpg';
 // import Image04 from '../../images/user-36-08.jpg';
 // import Image05 from '../../images/user-36-09.jpg';
+import Image03 from '../../../images/user-36-07.jpg'
 
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { listAllStudents, updateStudent } from './../../../../state/features/studentSlice'
+import { listAllStudents, updateStudent } from '../../../../../state/features/studentSlice'
 
 function DashboardCard10(props) {
   // redux dispatch 

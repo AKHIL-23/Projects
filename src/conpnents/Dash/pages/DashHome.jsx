@@ -16,7 +16,7 @@ import DashboardCard09 from '../partials/dashboard/DashboardCard09';
 import DashboardCard11 from '../partials/dashboard/DashboardCard11';
 import DashboardCard12 from '../partials/dashboard/DashboardCard12';
 import DashboardCard13 from '../partials/dashboard/DashboardCard13';
-import ListAllStudents from './students/ListAllStudents';
+import ListAllStudents from './Users-Dashboards/Admin-Dashboard/ListAllStudents'
 
 const DashHome = () => {
   return (

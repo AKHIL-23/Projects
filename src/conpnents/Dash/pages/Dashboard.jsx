@@ -1,4 +1,5 @@
 import React, { useState, useLocation, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 // import '../css/style.scss';
 // import '../charts/ChartjsConfig';
 import Sidebar from '../partials/Sidebar';
@@ -7,8 +8,8 @@ import Banner from '../partials/Banner';
 import { Link, Outlet } from 'react-router-dom';
 
 
-import { GetLogedUser } from '../../../state/servicesApi/userAuthApi'
-import { getToken } from '../../../state/LocalStorageService'
+import { getToken, removeToken } from '../../../state/LocalStorageService'
+import { clearAuthToken } from '../../../state/features/AuthTokenSlice';
 
 
 // REDUX STORE USER SLICE 
@@ -19,11 +20,13 @@ const Dashboard = () => {
 
   const token = getToken()
   const dispatch = useDispatch()
+  let navigate = useNavigate()
   // const LogeUser = useSelector((state) => state.user.user);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
 
   const [isloading, setisloading] = useState(true)
+
   useEffect(() => {
 
     fetch("http://localhost:8000/api/zn/user/logeduser", {
@@ -33,47 +36,22 @@ const Dashboard = () => {
       }
     }).then(response => response.json())
       .then(data => {
-        // console.log("using dashboard fetch", data.payload)
-        dispatch(fetchUserRecord(data.payload))
+        console.log("Loged user api resonser", data)
+        if (data.status) {
+          dispatch(fetchUserRecord(data.payload))
+
+
+        }
+        else {
+          alert(data.message)
+          removeToken('authToken')
+          dispatch(clearAuthToken())
+          navigate("/")
+
+        }
+
       });
-
-
-
   }, [dispatch])
-  // const [data, setData] = useState({
-  //   _id: "",
-  //   user_id: {
-  //     _id: "",
-  //     username: "test",
-  //     email: "",
-  //     contactNumber: 0,
-  //     role: "",
-  //     gender: ""
-  //   },
-  //   city: ""
-  // })
-  // const location = useLocation();
-
-  // useEffect(() => {
-  //   document.querySelector('html').style.scrollBehavior = 'auto'
-  //   window.scroll({ top: 0 })
-  //   document.querySelector('html').style.scrollBehavior = ''
-  // }, [location.pathname]); // triggered on route change
-
-
-
-  // console.log(`dashboard data ${data}`)
-
-  // // USER REDUX DATA 
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchUserRecord(data))
-  // }, [])
-  // const userRecord = useSelector((state) => state.user.user);
-
-  // useEffect(() => {
-  //   setValues(userRecord)
-  // }, [userRecord])
 
 
   return (

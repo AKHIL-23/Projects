@@ -60,6 +60,7 @@ const Login = () => {
             });
             const json = await response.json()
             setTemp(json)
+            console.log(json)
 
 
             // console.log(json);

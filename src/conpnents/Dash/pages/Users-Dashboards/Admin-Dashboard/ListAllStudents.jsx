@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import DashboardCard10 from '../../partials/dashboard/DashboardCard10';
+import DashboardCard10 from './DashboardCard10';
 
 // redux 
 import { useSelector, useDispatch } from 'react-redux';
-import { listAllStudents } from '../../../../state/features/studentSlice';
+import { listAllStudents } from '../../../../../state/features/studentSlice';
 
 const ListAllStudents = () => {
   // redux dispatch 
