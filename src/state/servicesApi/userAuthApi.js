@@ -1,10 +1,10 @@
-// import { useDispatch } from 'react-redux';
-// import { fetchUserRecord } from '../features/UserSlice';
-
+import { useDispatch } from 'react-redux';
+import { fetchUsersRecords } from '../features/UserSlice';
+import { useEffect } from 'react';
 
 const GetLogedUser = async (token) => {
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const response = await fetch("http://localhost:8000/api/zn/user/logeduser", {
         method: 'GET',
         headers: {
@@ -15,10 +15,35 @@ const GetLogedUser = async (token) => {
     console.log(`getLogedUser function `, json);
     return json.payload
 
-    // dispatch(fetchUserRecord(json.payload))
+
+
+
+
+}
+const ListAllUsers = async (token) => {
+    // const dispatch = useDispatch();
+    const response = await fetch("http://localhost:8000/api/zn/user/userlist", {
+        method: 'GET',
+        headers: {
+            'authorization': `Bearer ${token}`
+        }
+    });
+    const json = await response.json()
+    return json
 
 
 
 }
 
-export { GetLogedUser }
+const ListAllRoles = async () => {
+    const response = await fetch("http://localhost:8000/api/zn/role/listallroles", {
+        method: 'GET',
+        headers: {
+            // 'authorization': `Bearer ${token}`
+        }
+    });
+    const json = await response.json()
+    return json.payload
+}
+
+export { GetLogedUser, ListAllUsers, ListAllRoles }

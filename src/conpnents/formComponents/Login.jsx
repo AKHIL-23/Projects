@@ -135,7 +135,7 @@ const Login = () => {
                         </div>
 
                     </div>
-                    <h1>{temp.message}</h1>  {/* Server Response */}
+                    <h1 >{temp.message}</h1>  {/* Server Response */}
 
                     <button className='bg-blue-400 hover:bg-blue-500 text-white py-1 px-2 rounded-md mt-5' type='submit' onClick={validateAll}>Login</button>
 

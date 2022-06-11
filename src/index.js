@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // React - Redux code  
 import { store } from './state/store'
@@ -14,7 +14,9 @@ ReactDOM.render(
 
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <Routes>
+          <Route path="/*" element={<App />} />
+        </Routes>
       </Provider>
     </BrowserRouter>,
 

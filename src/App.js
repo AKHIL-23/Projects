@@ -5,6 +5,9 @@ import { useEffect } from 'react';
 import './conpnents/Dash/css/style.scss'
 import './conpnents/Dash/charts/ChartjsConfig.jsx'
 
+// main layouts
+import Layout from './Layout';
+import Dashboard from './conpnents/Dash/pages/Dashboard';
 // public components
 import Home from './conpnents/pages/Home';
 import SigninPage from './conpnents/formComponents/SigninPage';
@@ -13,15 +16,27 @@ import CoursePage from './conpnents/CoursePageComponents/CoursePage'
 import PageNotFound from './conpnents/pages/PageNotFound'
 
 // private components 
-import AdminDashboard from './conpnents/Dash/pages/Users-Dashboards/Admin-Dashboard/AdminDashboard';
-
-
-
+import DashHome from './conpnents/Dash/pages/DashHome';
+import AddStudents from './conpnents/Dash/pages/students/AddStudents';
+import ListAllStudents from './conpnents/Dash/pages/Users-Dashboards/Admin-Dashboard/ListAllStudents'
+import EditStudent from './conpnents/Dash/pages/students/EditStudent'
+// Modules components  start
+import ModuleMainComponent from './conpnents/Dash/pages/Modules_/ModuleMainComponent';
+import ListAllModules from './conpnents/Dash/pages/Modules_/ListAllModules';
+import AddNewModule from './conpnents/Dash/pages/Modules_/AddNewModule';
+import AssingModule from './conpnents/Dash/pages/Modules_/AssingModule';
+//User components start
+import UserMainComponent from './conpnents/Dash/pages/User/UserMainComponent';
+import RegisterUser from './conpnents/Dash/pages/User/Registration';
+import CreateRole from './conpnents/Dash/pages/User/CreateRole';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { getToken } from './state/LocalStorageService';
 import { setAuthToken } from './state/features/AuthTokenSlice'
 import { fetchUserRecord } from './state/features/UserSlice';
+
+
+
 
 
 function App() {
@@ -65,33 +80,56 @@ function App() {
     <>
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signin" element={auth ? <Navigate to="/dashboard" /> : <SigninPage />} />
-        <Route path="/About" element={<About />} />
-        {/* <Route path="/ContactUs" element={} /> */}
-        <Route path="/Course/:c_id" element={<CoursePage />} />
-        <Route />
-        {/* ---------------------------------------------------------------------------------- */}
-        {/* <Route path="/dashboard" element={!auth ? <Navigate to="/signin" /> : <Dashboard />} >
+
+
+        <Route path="/" element={<Layout />}>
+          {/* public Route */}
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={auth ? <Navigate to="/dashboard" /> : <SigninPage />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Course/:c_id" element={<CoursePage />} />
+
+        </Route>
+
+        {/* private route  */}
+        <Route path="/dashboard" element={!auth ? <Navigate to="/signin" /> : <Dashboard />} >
+          {/* Student related Private Route  */}
 
           <Route exact path="/dashboard" element={<DashHome />} />
           <Route exact path="/dashboard/addstudent" element={<AddStudents />} />
           <Route exact path="/dashboard/listallstudents" element={<ListAllStudents />} />
           <Route exact path="/dashboard/listallstudents/edit/:_id" element={<EditStudent />} />
-        </Route> */}
-        {/* ------------------------------------------------------------------------- */}
-        {/* These all empty routes is created to ingnore the "Page Not found showing other routes collection like  AdminDasboard Routees colllection" */}
-        <Route exact path="/dashboard" />
-        <Route exact path="/dashboard/addstudent" />
-        <Route exact path="/dashboard/listallstudents" />
-        <Route exact path="/dashboard/listallstudents/edit/:_id" />
 
-        {/* 404 page not found page route  */}
+          {/* Module related private route  */}
+
+          <Route exact path="/dashboard/modules" element={<ModuleMainComponent />}>
+
+            <Route path="addmodule" element={<AddNewModule />} />
+            <Route path="allmodules" element={<ListAllModules />} />
+            <Route path="assingmodule" element={<AssingModule />} />
+
+          </Route>
+
+
+          <Route exact path="/dashboard/user" element={<UserMainComponent />}>
+            <Route path="register" element={<RegisterUser />} />
+            <Route path="createrole" element={<CreateRole />} />
+
+
+
+          </Route>
+
+          {/* Dashboard outlet area end here */}
+        </Route>
+
+
         <Route path='*' element={<PageNotFound />} />
-      </Routes >
+
+      </Routes>
+
 
       {/* Admin Dashboard Routes  */}
-      <AdminDashboard auth={auth} />
+      {/* <AdminDashboard auth={auth} /> */}
 
 
 

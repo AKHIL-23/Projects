@@ -34,6 +34,7 @@ const ListAllStudents = () => {
       result.json().then((res) => {
         // setStudentsRecords(res);
         dispatch(listAllStudents(res))
+        // console.log(res)
 
 
       })

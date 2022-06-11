@@ -17,11 +17,11 @@ import { listAllStudents, updateStudent } from '../../../../../state/features/st
 function DashboardCard10(props) {
   // redux dispatch 
   const dispatch = useDispatch()
+  const studentsRecord = useSelector((state) => state.student.students);
 
   const col = [...props.columns]
   const location = useLocation()
   const records = props.records;
-
 
 
 
@@ -68,6 +68,7 @@ function DashboardCard10(props) {
             </thead>
             {/* Table body */}
             <tbody className="text-sm divide-y divide-slate-100">
+
               {
                 records.map(record => {
                   return (
@@ -76,11 +77,11 @@ function DashboardCard10(props) {
                         <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
                           <img className="rounded-full" src={Image03} width="40" height="40" alt={record.name} />
                         </div>
-                        <div className="font-medium text-slate-800 text-center">{record.name}</div>
+                        <div className="font-medium text-slate-800 text-center">{record.user_id.username}</div>
                       </td>
 
                       <td className="p-2 whitespace-nowrap">
-                        <div className="font-medium text-slate-800 text-center">{record.contactNumber}</div>
+                        <div className="font-medium text-slate-800 text-center">{record.user_id.contactNumber}</div>
                       </td>
 
                       <td className="p-2 whitespace-nowrap">
@@ -88,23 +89,23 @@ function DashboardCard10(props) {
                       </td>
 
                       <td className="p-2 whitespace-nowrap">
-                        <div className="font-medium text-slate-800 text-center">{record.gender}</div>
+                        <div className="font-medium text-slate-800 text-center">{record.user_id.gender}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="font-medium text-slate-800 text-center">{record.address}</div>
+                        <div className="font-medium text-slate-800 text-center">{record.user_id.address}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
                         <div className="font-medium text-slate-800 text-center">{record.status}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="font-medium text-slate-800 text-center">{record.city}</div>
+                        <div className="font-medium text-slate-800 text-center">{record.user_id.city}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="font-medium text-slate-800 text-center">{record.state}</div>
+                        <div className="font-medium text-slate-800 text-center">{record.state.state}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
                         <div className="">
-                          <div className="font-medium text-slate-800 text-center">{record.email}</div>
+                          <div className="font-medium text-slate-800 text-center">{record.user_id.email}</div>
                         </div>
                       </td>
 

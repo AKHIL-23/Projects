@@ -6,11 +6,12 @@ const initialState = []
 const UserSlice = createSlice({
     name: 'user',
     initialState: {
-
+        users: [],
+        roles: [],
         user: {
 
-        }
-        ,
+        },
+        sideBar: [],
     },
     reducers: {
 
@@ -18,15 +19,24 @@ const UserSlice = createSlice({
             state.user = action.payload;
 
         },
+        fetchUsersRecords: (state, action) => {
+            state.users = action.payload;
+        },
         clearFetchRecord: (state) => {
             state.user = {
 
             };
+        },
+        setSidebar: (state, action) => {
+            state.sideBar = action.payload;
+        },
+        setRolesList: (state, action) => {
+            state.roles = action.payload
         },
 
 
     },
 })
 
-export const { fetchUserRecord, clearFetchRecord } = UserSlice.actions
+export const { fetchUserRecord, fetchUsersRecords, clearFetchRecord, setSidebar, setRolesList } = UserSlice.actions
 export default UserSlice.reducer

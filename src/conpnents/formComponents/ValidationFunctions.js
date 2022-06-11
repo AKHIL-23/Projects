@@ -50,14 +50,16 @@ const Validation = (values) => {
         errors.Mnumber = "invailed mobile Number"
         // errors.submitStatus = false
     }
+    //     // ---------------------------Validation for role start from here ----------------------
     else if (!values.role) {
-        // ---------------------------Validation for role start from here ----------------------
         errors.role = "Role Required"
-    }
-    else if (values.role !== "Student" && values.role !== "Faculty") {
-        errors.role = "Invailed role option please select form the given option"
 
     }
+    // else if (values.role !== "Student" && values.role !== "Faculty") {
+    //     errors.role = "Invailed role option please select form the given option"
+    //     console.log(values.role);
+
+    // }
     else if (!values.gender) {
         // -------------------validation for gender start from here --------------------
         errors.gender = "Gender Required"
