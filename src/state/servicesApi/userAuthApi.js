@@ -2,9 +2,10 @@ import { useDispatch } from 'react-redux';
 import { fetchUsersRecords } from '../features/UserSlice';
 import { useEffect } from 'react';
 
+
 const GetLogedUser = async (token) => {
 
-    const dispatch = useDispatch();
+
     const response = await fetch("http://localhost:8000/api/zn/user/logeduser", {
         method: 'GET',
         headers: {
@@ -13,11 +14,7 @@ const GetLogedUser = async (token) => {
     });
     const json = await response.json()
     console.log(`getLogedUser function `, json);
-    return json.payload
-
-
-
-
+    return json
 
 }
 const ListAllUsers = async (token) => {

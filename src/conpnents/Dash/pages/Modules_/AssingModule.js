@@ -52,7 +52,8 @@ const AssingModule = () => {
         let res = AssingModuleApi(data)
         res.then((result) => {
             // dispatch(AssinModuleListTORedux(result))
-            console.log(result)
+            // console.log(result)
+            alert(result.message)
         })
 
 

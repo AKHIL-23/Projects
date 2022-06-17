@@ -15,6 +15,7 @@ import { clearAuthToken } from '../../../state/features/AuthTokenSlice';
 // REDUX STORE USER SLICE 
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserRecord, setSidebar } from './../../../state/features/UserSlice'
+import { GetLogedUser } from '../../../state/servicesApi/UserAuthApi';
 
 const Dashboard = () => {
 
@@ -30,30 +31,22 @@ const Dashboard = () => {
 
   useEffect(() => {
 
-    fetch("http://localhost:8000/api/zn/user/logeduser", {
-      method: 'GET',
-      headers: {
-        'authorization': `Bearer ${token}`
+    const response = GetLogedUser(token)
+    response.then((result) => {
+
+      if (result.status) {
+        dispatch(fetchUserRecord({ ...result.payload, ...result.payload.user_id }))
+        dispatch(setSidebar(result.sidebar))
+
       }
-    }).then(response => response.json())
-      .then(data => {
-        console.log("Loged user api resonser", data)
+      else {
+        alert(result.message)
+        removeToken('authToken')
+        dispatch(clearAuthToken())
+        navigate("/")
 
-        if (data.status) {
-          dispatch(fetchUserRecord(data.payload))
-          dispatch(setSidebar(data.sidebar))
-
-
-        }
-        else {
-          alert(data.message)
-          removeToken('authToken')
-          dispatch(clearAuthToken())
-          navigate("/")
-
-        }
-
-      });
+      }
+    })
   }, [dispatch])
 
 
@@ -62,11 +55,10 @@ const Dashboard = () => {
 
     <>
       {/* {
-        isloading ? */}
+        isloading ?
 
-      {/* <Link to='/dashboard' onClick={setisloading(false)}>GO TO Dashboard</Link> */}
-      {/* <h1 onClick={() => { setisloading(false) }}>GO To Dashbard</h1> */}
-      {/* : */}
+
+          <Link to='/dashboard' onClick={setisloading(false)}>GO TO Dashboard</Link> :  */}
       <div className="flex h-screen overflow-hidden">
 
 

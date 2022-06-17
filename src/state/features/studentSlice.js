@@ -6,18 +6,7 @@ const studentSlice = createSlice({
     name: 'student',
     initialState: {
         students: [],
-        student: {
-            name: "",
-            email: "",
-            contactNumber: "",
-            age: "",
-            gender: "",
-            address: "",
-            status: "",
-            city: "",
-            state: "",
-
-        },
+        student: {},
     },
     reducers: {
 
@@ -30,18 +19,7 @@ const studentSlice = createSlice({
 
         },
         clearFetechRecord: (state) => {
-            state.student = {
-                name: "",
-                email: "",
-                contactNumber: "",
-                age: "",
-                gender: "",
-                address: "",
-                status: "",
-                city: "",
-                state: "",
-
-            };
+            state.student = {};
         },
         addStudent: (state, action) => {
             state.students = [action.payload, ...state.students];

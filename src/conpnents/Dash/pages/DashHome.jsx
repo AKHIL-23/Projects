@@ -15,8 +15,8 @@ import DashboardCard09 from '../partials/dashboard/DashboardCard09';
 // import DashboardCard10 from '../partials/dashboard/DashboardCard10';
 import DashboardCard11 from '../partials/dashboard/DashboardCard11';
 import DashboardCard12 from '../partials/dashboard/DashboardCard12';
-import DashboardCard13 from '../partials/dashboard/DashboardCard13';
-import ListAllStudents from './Users-Dashboards/Admin-Dashboard/ListAllStudents'
+// import DashboardCard13 from '../partials/dashboard/DashboardCard13';
+// import ListAllStudents from './Users-Dashboards/Admin-Dashboard/ListAllStudents'
 
 const DashHome = () => {
   return (
@@ -80,7 +80,7 @@ const DashHome = () => {
 
 
         <div className="col-span-full xl:col-span-6 bg-red-500 shadow-lg rounded-sm border border-slate-200 h-96" style={{ position: 'relative', overflow: 'scroll' }}>
-          <ListAllStudents />
+          {/* <ListAllStudents /> */}
         </div>
 
       </div>

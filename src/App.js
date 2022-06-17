@@ -18,7 +18,7 @@ import PageNotFound from './conpnents/pages/PageNotFound'
 // private components 
 import DashHome from './conpnents/Dash/pages/DashHome';
 import AddStudents from './conpnents/Dash/pages/students/AddStudents';
-import ListAllStudents from './conpnents/Dash/pages/Users-Dashboards/Admin-Dashboard/ListAllStudents'
+import ListAllStudents from './conpnents/Dash/pages/students/ListAllStudents' //done
 import EditStudent from './conpnents/Dash/pages/students/EditStudent'
 // Modules components  start
 import ModuleMainComponent from './conpnents/Dash/pages/Modules_/ModuleMainComponent';
@@ -35,7 +35,7 @@ import { getToken } from './state/LocalStorageService';
 import { setAuthToken } from './state/features/AuthTokenSlice'
 import { fetchUserRecord } from './state/features/UserSlice';
 
-
+import componentAuthorization from './Auth/FrontendAutherization.js';
 
 
 
@@ -74,7 +74,7 @@ function App() {
   //     });
   // }, [dispatch])
 
-
+  componentAuthorization.authorizationMethod("data")
 
   return (
     <>
@@ -93,29 +93,29 @@ function App() {
 
         {/* private route  */}
         <Route path="/dashboard" element={!auth ? <Navigate to="/signin" /> : <Dashboard />} >
+          {/* element={!auth ? <Navigate to="/signin" /> : <Dashboard />}  */}
           {/* Student related Private Route  */}
 
           <Route exact path="/dashboard" element={<DashHome />} />
           <Route exact path="/dashboard/addstudent" element={<AddStudents />} />
-          <Route exact path="/dashboard/listallstudents" element={<ListAllStudents />} />
-          <Route exact path="/dashboard/listallstudents/edit/:_id" element={<EditStudent />} />
+          <Route exact path="/dashboard/listallstudents" element={componentAuthorization.authorizationMethod("/dashboard/listallstudents") ? <ListAllStudents /> : <Navigate to="/dashboard" />} />
+          <Route exact path="/dashboard/listallstudents/edit/:_id" element={componentAuthorization.authorizationMethod("/dashboard/listallstudents/edit/:_id") ? <EditStudent /> : <Navigate to="/dashboard" />} />
+
 
           {/* Module related private route  */}
 
           <Route exact path="/dashboard/modules" element={<ModuleMainComponent />}>
 
-            <Route path="addmodule" element={<AddNewModule />} />
-            <Route path="allmodules" element={<ListAllModules />} />
-            <Route path="assingmodule" element={<AssingModule />} />
+            <Route path="addmodule" element={componentAuthorization.authorizationMethod("addmodule") ? <AddNewModule /> : <Navigate to="/dashboard" />} />
+            <Route path="allmodules" element={componentAuthorization.authorizationMethod("allmodules") ? <ListAllModules /> : <Navigate to="/dashboard" />} />
+            <Route path="assingmodule" element={componentAuthorization.authorizationMethod("assingmodule") ? <AssingModule /> : <Navigate to="/dashboard" />} />
 
           </Route>
 
-
+          {/* User related private route  */}
           <Route exact path="/dashboard/user" element={<UserMainComponent />}>
-            <Route path="register" element={<RegisterUser />} />
+            <Route path="register" element={componentAuthorization.authorizationMethod("register") ? <RegisterUser /> : <Navigate to="/dashboard" />} />
             <Route path="createrole" element={<CreateRole />} />
-
-
 
           </Route>
 

@@ -5,7 +5,9 @@ const AddNewModule = () => {
     const [modules, setModule] = useState(
         {
             module_name: "",
-            component_path: ""
+            component_path: "",
+            controller_path: "",
+            icon_path: ""
         });
 
     const onChange = (event) => {
@@ -36,7 +38,9 @@ const AddNewModule = () => {
             alert(json.message)
             await setModule({
                 module_name: "",
-                component_path: ""
+                component_path: "",
+                controller_path: "",
+                icon_path: ""
             })
             await setServerres({})
         }
@@ -58,14 +62,24 @@ const AddNewModule = () => {
 
 
 
-                        <div className='col-span-12  space-y-2'>
+                        <div className='col-span-6  space-y-2'>
                             <label htmlFor="" className='text-sm text-slate-500'>Module Name</label>
                             <input type="text" className='w-full border-2  p-2 rounded-md' name='module_name' value={modules.module_name} onChange={onChange} />
 
                         </div>
-                        <div className='col-span-12  space-y-2'>
+                        <div className='col-span-6  space-y-2'>
                             <label htmlFor="" className='text-sm text-slate-500'>Module Component Path</label>
                             <input type="text" className='w-full border-2  p-2 rounded-md' name='component_path' value={modules.component_path} onChange={onChange} />
+
+                        </div>
+                        <div className='col-span-6  space-y-2'>
+                            <label htmlFor="" className='text-sm text-slate-500'>Module controller Path</label>
+                            <input type="text" className='w-full border-2  p-2 rounded-md' name='controller_path' value={modules.controller_path} onChange={onChange} />
+
+                        </div>
+                        <div className='col-span-6  space-y-2'>
+                            <label htmlFor="" className='text-sm text-slate-500'>Svg icon Path</label>
+                            <input type="text" className='w-full border-2  p-2 rounded-md' name='icon_path' value={modules.icon_path} onChange={onChange} />
 
                         </div>
 

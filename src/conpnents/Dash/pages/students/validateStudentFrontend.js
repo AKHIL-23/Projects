@@ -5,7 +5,7 @@ const Validation = (values) => {
     let errors = {};
 
     //Validation for name 
-    if (!values.name) {
+    if (!values.username) {
         errors.name = "required name  ";
         errors.submitStatus = false
 
@@ -38,6 +38,19 @@ const Validation = (values) => {
         errors.Mnumber = "invalid mobile number ";
         errors.submitStatus = false;
     }
+    //Admission and passout data validation 
+    else if (!values.admission_date) {
+        errors.admission_date = "Admission data required"
+        errors.submitStatus = false
+
+    }
+
+    //validation for address 
+    else if (!values.address) {
+        errors.address = "Address required"
+        errors.submitStatus = false
+
+    }
     //validation for age 
     else if (!values.age) {
         errors.age = "age required "
@@ -56,22 +69,6 @@ const Validation = (values) => {
 
 
     }
-    //validation for address 
-    else if (!values.address) {
-        errors.address = "Address required"
-        errors.submitStatus = false
-
-    }
-
-    //status validaation
-    else if (!values.status) {
-        errors.status = "status required"
-        errors.submitStatus = false
-    }
-    // else if (values.status == "statusOpt") {
-    //     errors.status = "invaildes status option"
-    //     errors.submitStatus = false
-    // }
     //validation for city 
     else if (!values.city) {
         errors.city = "city required"
@@ -80,12 +77,11 @@ const Validation = (values) => {
     }
     //state validation 
     else if (!values.state) {
-        errors.state = "state required"
+        errors.state = " select your state required"
         errors.submitStatus = false
 
 
     }
-
     // if all contidition willfalse than submit true
     else {
         errors.submitStatus = true
@@ -93,7 +89,7 @@ const Validation = (values) => {
     }
 
 
-    console.log(errors)
+
     return errors;
 }
 

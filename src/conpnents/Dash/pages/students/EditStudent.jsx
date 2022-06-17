@@ -1,10 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import AddForm from './createComponents/AddForm';
 import Profile from './createComponents/Profile';
 
 // Redux 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getStudentRecord, clearFetechRecord } from './../../../../state/features/studentSlice'
 
 
@@ -15,32 +15,13 @@ const EditStudent = () => {
     // Redux 
     const dispatch = useDispatch();
     let param = useParams();
+    dispatch(getStudentRecord(param._id))
 
     useEffect(() => {
-        dispatch(getStudentRecord(param._id))
         return () => {
             dispatch(clearFetechRecord())
         };
     }, [])
-
-    // Redux 
-    const EditRecord = useSelector((state) => state.student.student);
-    // console.log(param._id);
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:8000/api/zn/edit/:_id`, {
-    //         method: 'PUT',
-    //         // body: JSON.stringify(values),
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-
-    //     }).then(res => res.json())
-    //         .then(res => console.log(res));
-
-    // }, [])
-
-
 
 
     return (
@@ -55,7 +36,7 @@ const EditStudent = () => {
                         <Profile />
                     </div>
                     <div className='col-span-12 md:col-span-8'>
-                        <AddForm record={EditRecord} btnText={"Update Student Record"} />
+                        <AddForm btnText={"Update Student Record"} />
                     </div>
 
                 </div>

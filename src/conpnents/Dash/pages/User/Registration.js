@@ -3,7 +3,7 @@ import Validation from '../../../formComponents/ValidationFunctions.js';
 import { useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from 'react-redux'
-// import { fetchUserRecord, clearFetchRecord } from '../../state/features/UserSlice.js';
+import { fetchUserRecord } from '../../../../state/features/UserSlice.js';
 // import { storeToken } from '../../state/LocalStorageService';
 
 
@@ -12,7 +12,7 @@ const RegisterUser = () => {
 
 
     // Redux 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const roles = useSelector((state) => state.user.roles);
 
     const [values, setValues] = useState({
@@ -24,9 +24,7 @@ const RegisterUser = () => {
         role: "",
         gender: "",
     });
-    // useEffect(() => {
-    //     setValues(userRecord)
-    // }, [userRecord])
+
 
 
 
@@ -37,12 +35,12 @@ const RegisterUser = () => {
     const [error, setError] = useState({});
 
     // Form validation logic
-    // const validateAll = async () => {
-    //     await setError(Validation(values))
+    const validateAll = async () => {
+        await setError(Validation(values))
 
-    //     // dispatch(fetchUserRecord(values))
+        dispatch(fetchUserRecord(values))
 
-    // }
+    }
 
 
     //Response Message 
@@ -67,32 +65,28 @@ const RegisterUser = () => {
     const RegisterHandler = async (e) => {
 
         e.preventDefault();
-        // if (error.submitStatus) {
-        //     // Register New User API call
-        //     const response = await fetch("http://localhost:8000/api/zn/user/register", {
-        //         method: 'POST',
-        //         body: JSON.stringify(values),
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     });
-        //     const json = await response.json()
-        //     setTemp(json)
+        if (error.submitStatus) {
+            // Register New User API call
+            const response = await fetch("http://localhost:8000/api/zn/user/register", {
+                method: 'POST',
+                body: JSON.stringify(values),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const json = await response.json()
+            setTemp(json)
 
-        //     console.log(json);
-        //     if (json.status) {
+            console.log(json);
+            if (json.status) {
 
-        //         // storeToken(json.authToken)
-        //         // await navigate("/dashboard");
-        //         clearForm(e)
+                // storeToken(json.authToken)
+                // await navigate("/dashboard");
+                clearForm(e)
 
-        //     }
+            }
+        }
 
-
-
-
-        // }
-        console.log(values)
 
     }
 
@@ -145,9 +139,7 @@ const RegisterUser = () => {
                         <label htmlFor="" className='text-sm text-slate-500'>Role</label>
 
                         <select id="" className='w-full border-2  p-2 rounded-md' name="role" value={values.role} onChange={onChange}  >
-                            {/* <option value="" disabled className=''>choose... </option>
-                            <option value="Student">Student</option>
-                            <option value="Faculty">Faculty</option> */}
+
                             {
                                 roles.map(role => {
                                     return (<option key={role._id} value={role._id}>{role.rolename}</option>)
@@ -186,8 +178,8 @@ const RegisterUser = () => {
 
                 <h1>{temp.message}</h1>{/*   Server Response */}
 
-                <button className='bg-blue-400 hover:bg-blue-500 text-white py-1 px-2 rounded-md mt-5' type='submit' >Registration</button>
-                {/* onClick={validateAll} */}
+                <button className='bg-blue-400 hover:bg-blue-500 text-white py-1 px-2 rounded-md mt-5' type='submit' onClick={validateAll} >Registration</button>
+
 
             </form>
         </div>
