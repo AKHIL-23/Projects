@@ -6,11 +6,13 @@ import { useEffect } from 'react'
 import { ListAllRoles } from '../../../../state/servicesApi/UserAuthApi'
 // redux store 
 import { setRolesList } from '../../../../state/features/UserSlice'
+import { getToken } from '../../../../state/LocalStorageService'
 const UserMainComponent = () => {
 
+    const token = getToken()
     const dispatch = useDispatch()
     useEffect(() => {
-        const roles = ListAllRoles()
+        const roles = ListAllRoles(token)
         roles.then((result) => {
             dispatch(setRolesList(result))
 
@@ -22,8 +24,8 @@ const UserMainComponent = () => {
         <>
             <section>
                 <div>
-                    <NavLink end to="/dashboard/user/register">Register</NavLink>
-                    <NavLink end to="/dashboard/user/createrole">Create Role</NavLink>
+                    <NavLink end to="/dashboard/user/register" className="bg-blue-500 p-2 text-white rounded-md mr-3">Register</NavLink>
+                    <NavLink end to="/dashboard/user/createrole" className="bg-blue-500 p-2 text-white rounded-md mr-3">Create Role</NavLink>
 
                 </div>
                 <div>

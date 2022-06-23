@@ -14,6 +14,9 @@ const moduletSlice = createSlice({
             state.modules = action.payload;
 
         },
+        setSingleModule: (state, action) => {
+            state.module = action.payload
+        },
         // clearFetechRecord: (state) => {
         //     state.student = {};
         // },
@@ -29,5 +32,5 @@ const moduletSlice = createSlice({
     },
 })
 
-export const { AssinModuleListTORedux } = moduletSlice.actions
+export const { AssinModuleListTORedux, setSingleModule } = moduletSlice.actions
 export default moduletSlice.reducer

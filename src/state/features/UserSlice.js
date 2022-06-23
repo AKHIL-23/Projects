@@ -30,6 +30,9 @@ const UserSlice = createSlice({
         setSidebar: (state, action) => {
             state.sideBar = action.payload;
         },
+        clearSidebar: (state) => {
+            state.sideBar = [];
+        },
         setRolesList: (state, action) => {
             state.roles = action.payload
         },
@@ -38,5 +41,5 @@ const UserSlice = createSlice({
     },
 })
 
-export const { fetchUserRecord, fetchUsersRecords, clearFetchRecord, setSidebar, setRolesList } = UserSlice.actions
+export const { fetchUserRecord, fetchUsersRecords, clearFetchRecord, setSidebar, clearSidebar, setRolesList } = UserSlice.actions
 export default UserSlice.reducer

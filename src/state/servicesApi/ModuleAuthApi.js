@@ -21,4 +21,15 @@ const AssingModuleApi = async (value) => {
 
 
 }
-export { GetAllModuleList, AssingModuleApi }
+const EditModuleApi = async (value) => {
+    const response = await fetch("http://localhost:8000/api/zn/module/editModule", {
+        method: 'POST',
+        body: JSON.stringify(value),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const json = await response.json()
+    return json
+}
+export { GetAllModuleList, AssingModuleApi, EditModuleApi }

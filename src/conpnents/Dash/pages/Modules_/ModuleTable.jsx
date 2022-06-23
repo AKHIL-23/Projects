@@ -2,13 +2,26 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import Edit_Module from './Edit_Module';
+
+//Redus store module slice
+import { setSingleModule } from '../../../../state/features/ModuleSlice';
+import { useDispatch } from 'react-redux/es/exports';
 function ModuleTable(props) {
 
+  const dispatch = useDispatch()
 
   const col = [...props.columns]
 
   const location = useLocation();
   const records = props.records;
+
+  const [editmodule, seteditmodule] = useState(false)
+
+  const closeEditModelhandler = (data) => {
+    seteditmodule(data)
+
+  }
 
   //DO NOT REMOVE THIS CODE 
 
@@ -30,7 +43,7 @@ function ModuleTable(props) {
   // }
 
   return (
-    <div className="col-span-full xl:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
+    <div className="col-span-full xl:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200 h-screen ">
       <header className="px-5 py-4 border-b border-slate-100">
         <h2 className="font-semibold text-slate-800">{props.title}</h2>
 
@@ -71,13 +84,16 @@ function ModuleTable(props) {
                       <td className="p-2 whitespace-nowrap">
                         <div className="font-medium text-slate-800 text-center">{record.component_path}</div>
                       </td>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="font-medium text-slate-800 text-center">{record.controller_path}</div>
+                      </td>
 
                       <td className="p-2 whitespace-nowrap">
                         <div className="font-medium text-slate-800 text-center">
                           <select name="moduleusedBy" id="moduleUseBy" >
                             {
                               record.used_by.map(user => {
-                                return (<option key={user._id} value="volvo">{user.username}</option>)
+                                return (<option key={user._id} value="">{user.username}</option>)
 
                               })
                             }
@@ -91,10 +107,12 @@ function ModuleTable(props) {
 
                       <td className="p-2 whitespace-nowrap">
                         <div className="text-md text-center space-x-3">
-                          <NavLink end to={`${location.pathname}/edit/${record._id}`}>
-                            {/* <span><i className="fa-solid fa-user-pen text-blue-500 cursor-pointer" onClick={() => dispatch(updateStudent(record))}></i></span> */}
-                            <span><i className="fa-solid fa-user-pen text-blue-500 cursor-pointer"></i></span>
-                          </NavLink >
+
+                          <span><i className="fa-solid fa-user-pen text-blue-500 cursor-pointer" onClick={() => {
+                            seteditmodule(!editmodule)
+                            dispatch(setSingleModule(record))
+                          }}></i></span>
+
 
                           {/* <span ><i className="fa-solid fa-trash-can text-red-500 cursor-pointer" onClick={() => { deleteRecord(record._id, record.name) }} ></i></span> */}
 
@@ -110,6 +128,12 @@ function ModuleTable(props) {
         </div>
 
       </div>
+
+      {
+        editmodule ? <Edit_Module collapseData={editmodule} closeEditModelhandler={closeEditModelhandler} /> : ''
+      }
+
+
     </div>
   );
 }

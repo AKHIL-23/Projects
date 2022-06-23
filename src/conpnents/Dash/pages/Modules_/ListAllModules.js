@@ -17,6 +17,7 @@ const ListAllModules = () => {
     const col = [
         "Module Name",
         "Module component path",
+        "Module controller path",
         "Module used By",
         "Edit/Delete"
     ]

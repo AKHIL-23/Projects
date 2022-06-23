@@ -81,7 +81,7 @@ function StudentTable(props) {
                                             </td>
 
                                             <td className="p-2 whitespace-nowrap">
-                                                <div className="font-medium text-slate-800 text-center ">{record.user_id.age}</div>
+                                                <div className="font-medium text-slate-800 text-center ">{record.age}</div>
                                             </td>
 
                                             <td className="p-2 whitespace-nowrap">
@@ -106,18 +106,18 @@ function StudentTable(props) {
                                             </td>
                                             <td className="p-2 whitespace-nowrap">
                                                 <div className="">
-                                                    <div className="font-medium text-slate-800 text-center">{record.admission_date}</div>
+                                                    <div className="font-medium text-slate-800 text-center">{record.admission_date.slice(0, 10)}</div>
                                                 </div>
                                             </td>
                                             <td className="p-2 whitespace-nowrap">
                                                 <div className="">
-                                                    <div className="font-medium text-slate-800 text-center">{record.passout_date}</div>
+                                                    <div className="font-medium text-slate-800 text-center">{record.passout_date.slice(0, 10)}</div>
                                                 </div>
                                             </td>
                                             <td className="p-2 whitespace-nowrap ">
                                                 <div className=" ">
 
-                                                    <select name="moduleusedBy" id="moduleUseBy" className="ring ring-blue-200 rounded-md  w-full" >
+                                                    <select name="moduleusedBy" id="moduleUseBy" className=" w-full" >
                                                         {
                                                             record.endrolled_courses.map(course => {
                                                                 return (<option key={course._id} value="volvo">{course.name}</option>)

@@ -15,8 +15,8 @@ import { clearAuthToken } from '../../../state/features/AuthTokenSlice';
 // REDUX STORE USER SLICE 
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserRecord, setSidebar } from './../../../state/features/UserSlice'
+import { clearSidebar } from './../../../state/features/UserSlice';
 import { GetLogedUser } from '../../../state/servicesApi/UserAuthApi';
-
 const Dashboard = () => {
 
   const token = getToken()
@@ -35,7 +35,7 @@ const Dashboard = () => {
     response.then((result) => {
 
       if (result.status) {
-        dispatch(fetchUserRecord({ ...result.payload, ...result.payload.user_id }))
+        dispatch(fetchUserRecord({ ...result.payload, ...result.payload.user_id, ...result.payload.role }))
         dispatch(setSidebar(result.sidebar))
 
       }
@@ -47,6 +47,9 @@ const Dashboard = () => {
 
       }
     })
+    return () => {
+      dispatch(clearSidebar())
+    };
   }, [dispatch])
 
 
@@ -73,7 +76,7 @@ const Dashboard = () => {
 
           <main>
 
-            <div className="px-4 sm:px-6 lg:px-8 py-8 w-full  max-w-9xl mx-auto font-inter antialiased bg-slate-100 text-slate-600">
+            <div className="px-4 sm:px-6 lg:px-8 py-8 w-full  max-w-9xl mx-auto font-inter antialiased bg-slate-100 text-slate-600 relative z-10 ">
 
               {/* All Home content paste here by defult  */}
               <Outlet />

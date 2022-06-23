@@ -19,9 +19,18 @@ const AddForm = () => {
   // setValues(studentRecord)
   // }, [studentRecord])
 
+
+
+
+
+
   const onChange = (event) => {
 
     setValues({ ...values, [event.target.name]: event.target.value });
+    console.log(values)
+    console.log(values.admission_date)
+
+
 
 
   }
@@ -93,12 +102,12 @@ const AddForm = () => {
           </div>
           <div className='col-span-4 space-y-2'>
             <label htmlFor="" className='text-sm text-slate-500'>Admission Data</label>
-            <input type="date" className='w-full border-2  p-2 rounded-md' name='admission_date' value={values.admission_date} onChange={onChange} />
+            <input className='w-full border-2  p-2 rounded-md' name='admission_date' type="date" value={values.admission_date.slice(0, 10)} onChange={onChange} />
             <p className='text-xs text-red-600'>{error.admission_date}</p>
           </div>
           <div className='col-span-4 space-y-2'>
             <label htmlFor="" className='text-sm text-slate-500'>passout Date</label>
-            <input type="date" className='w-full border-2  p-2 rounded-md' name='passout_date' value={values.passout_date} onChange={onChange} />
+            <input type="date" className='w-full border-2  p-2 rounded-md' name='passout_date' value={values.passout_date.slice(0, 10)} onChange={onChange} />
             <p className='text-xs text-red-600'>{error.passout_date}</p>
           </div>
 

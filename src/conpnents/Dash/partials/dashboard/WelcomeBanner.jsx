@@ -1,6 +1,6 @@
 import React from 'react';
 // REDUX STORE 
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 function WelcomeBanner() {
   // REDUS USER STORE 
   const logedUserData = useSelector((state) => state.user.user)

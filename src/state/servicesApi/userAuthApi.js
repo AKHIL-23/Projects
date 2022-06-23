@@ -32,11 +32,11 @@ const ListAllUsers = async (token) => {
 
 }
 
-const ListAllRoles = async () => {
+const ListAllRoles = async (token) => {
     const response = await fetch("http://localhost:8000/api/zn/role/listallroles", {
         method: 'GET',
         headers: {
-            // 'authorization': `Bearer ${token}`
+            'authorization': `Bearer ${token}`
         }
     });
     const json = await response.json()
