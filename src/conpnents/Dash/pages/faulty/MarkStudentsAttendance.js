@@ -34,6 +34,7 @@ const MarkStudentsAttendance = () => {
             }
         }).then((result) => {
             result.json().then((res) => {
+                console.log({ ...res, attedancestatus: '' });
 
                 dispatch(listAllStudents(res))
 

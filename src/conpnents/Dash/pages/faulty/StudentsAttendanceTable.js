@@ -13,13 +13,8 @@ const StudentsAttendanceTable = (props) => {
     const location = useLocation()
     const records = props.records;
 
-    const [absentStudents, setAbsentStudent] = useState()
-
-    const onChangeHandler = (e) => {
-        setAbsentStudent({ [e.target.name]: e.target.value })
-        // alert(absentStudents)
-        console.log(absentStudents);
-    }
+    let attendanceRecords = []
+    // const [presentStudents, setPresentStudent] = useState({})
 
 
 
@@ -28,23 +23,64 @@ const StudentsAttendanceTable = (props) => {
     //Today date 
     const date = new Date().toISOString()
 
+    const tempfun = (studentID, status) => {
+        // console.log(`${data}=${status}`)
+        let doc = { student_id: studentID, attendanceStatus: status }
+
+        // attendanceRecords.push(doc)
+        let singleRecord = attendanceRecords.filter(record => record.student_id == studentID);
+        if (!singleRecord.length == 0) {
+            console.log("availabel record updated....")
+            // const updateddata = { ...singleRecord };
+
+            if (singleRecord[0].attendanceStatus == 'present') {
+                singleRecord[0].attendanceStatus = 'absent'
+            }
+            else {
+                singleRecord[0].attendanceStatus = 'present'
+
+            }
+            console.log(singleRecord[0].attendanceStatus);
+        }
+        else {
+            attendanceRecords.push(doc)
+            console.log('new record')
+        }
+        console.log('all attendance', attendanceRecords)
+        // console.log(singleRecord);
+
+    }
 
 
     const submitHandler = (event) => {
         event.preventDefault()
-        var input = document.getElementsByName('attendance[]');
 
-        console.log(input)
-        console.log("submittin....")
-        // fetch('http://localhost:8000/api/zn/attendance/markattendance', {
-        //     method: 'POST',
+        let values = { date: date, studentson: attendanceRecords }
+        console.log('final sheet of attendance ', values);
+        // console.log('final sheet of attendance ', values.studentson[0].student_id);
 
-        // }).then((result) => {
-        //     result.json().then((res) => {
-        //         console.log(res)
+        // console.log(document.getElementsByName('attendance[]'))
+        // console.log("submittin....")
+        // const data = new FormData(event.target);
+        // console.log(data);
+        // console.log(data.get('atten[]'));
+        fetch('http://localhost:8000/api/zn/attendance/markattendance', {
+            method: 'POST',
+            body: JSON.stringify(values),
+            headers: {
+                'Content-Type': 'application/json'
+            }
 
-        //     })
-        // })
+        }).then((result) => {
+            result.json().then((res) => {
+                console.log(res)
+
+            })
+        })
+        attendanceRecords = []
+        values = {}
+
+        event.target.reset();
 
     }
 
@@ -136,8 +172,8 @@ const StudentsAttendanceTable = (props) => {
                                                             {
                                                                 // {`atten['${record._id}']`}
                                                                 <div className='p-2 flex justify-evenly '>
-                                                                    <span>Present <input type="radio" name={`atten[${record._id}]`} value='present' onChange={onChangeHandler} /></span>
-                                                                    <span>Absent <input type="radio" name={`atten[${record._id}]`} value='absent' onChange={onChangeHandler} /></span>
+                                                                    <span>Present <input type="radio" name={`atten["${record.user_id.username}"]`} value='present' onClick={() => { tempfun(record._id, 'present') }} /></span>
+                                                                    <span>Absent <input type="radio" name={`atten["${record.user_id.username}"]`} value='absent' onClick={() => { tempfun(record._id, 'absent') }} /></span>
                                                                 </div>
 
                                                             }
