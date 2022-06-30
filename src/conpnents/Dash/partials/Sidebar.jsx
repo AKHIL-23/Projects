@@ -99,7 +99,7 @@ function Sidebar({
             <ul className="mt-3">
               {/* Profile  */}
               <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0  hover:border-l-8 border-l-blue-500 hover:bg-slate-100 transition-all  ${pathname.includes('calendar') && 'bg-slate-900'}`}>
-                <NavLink end to="/" className={`block text-black hover:text-blue-500 truncate transition duration-150 ${pathname.includes('calendar') && 'hover:text-black'}`}>
+                <NavLink end to="/dashboard/profile" className={`block text-black hover:text-blue-500 truncate transition duration-150 ${pathname.includes('calendar') && 'hover:text-black'}`}>
                   <div className="flex items-center">
                     <div className="w-8 h-8 shrink-0 ">
                       <img className="rounded-full" src={Image03} width="40" height="40" alt="profile" />

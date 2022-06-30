@@ -18,7 +18,7 @@ ReactDOM.render(
           <Route path="/*" element={<App />} />
         </Routes>
       </Provider>
-    </BrowserRouter>,
+    </BrowserRouter>
 
     {/* </React.StrictMode> */}
   </React.Fragment>,

@@ -58,6 +58,7 @@ const RegisterUser = () => {
         })
         e.target.reset();
         await setError({});
+        await setTemp({});
 
 
     }
@@ -78,10 +79,12 @@ const RegisterUser = () => {
             setTemp(json)
 
             console.log(json);
+            alert(json.message)
             if (json.status) {
 
                 // storeToken(json.authToken)
                 // await navigate("/dashboard");
+
                 clearForm(e)
 
             }

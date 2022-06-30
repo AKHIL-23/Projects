@@ -24,7 +24,7 @@ function StudentTable(props) {
     const deleteRecord = async (userID, name) => {
 
         // delete record in front end
-        if (window.confirm(`Are you sure ! you want to delete "${name}" related all records `)) {
+        if (window.confirm(`Are you sure you want to delete ? `)) {
             const Newrecords = records.filter((records) => { return records._id !== userID });
             dispatch(listAllStudents(Newrecords))
             // delete record at backend 
@@ -137,7 +137,10 @@ function StudentTable(props) {
                                                         <span><i className="fa-solid fa-user-pen text-blue-500 cursor-pointer"></i></span>
                                                     </NavLink >
 
-                                                    <span ><i className="fa-solid fa-trash-can text-red-500 cursor-pointer" onClick={() => { deleteRecord(record._id, record.name) }} ></i></span>
+                                                    <span ><i className="fa-solid fa-trash-can text-red-500 cursor-pointer" onClick={() => {
+                                                        deleteRecord(record.user_id.username)
+                                                        console.log(record.user_id.username)
+                                                    }} ></i></span>
 
                                                 </div>
                                             </td>

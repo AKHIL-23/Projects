@@ -1,6 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 // auth Token 
 import { getToken } from './../../state/LocalStorageService.js'
@@ -8,12 +9,14 @@ import { getToken } from './../../state/LocalStorageService.js'
 
 const Navbar = () => {
     const token = getToken()
+    const location = useLocation();
+
     return (
 
         <>
             <nav className='flex    items-center pt-4 px-3  sm:flex-row flex-col justify-around z-10   fixed top-0 w-full '>
                 <Link to="/" className=' transform hover:-translate-y-1 hover:scale-110 transition duration-500 ease-in-out ' >
-                    <h1 className='text-xl md:text-3xl 2xl:text-4xl  cursor-pointer sm:text-blue-500 text-blue-500  ' >ZnInfotech</h1></Link>
+                    <h1 className={`text-xl md:text-3xl 2xl:text-4xl  cursor-pointer text-blue-500`}>ZnInfotech</h1></Link>
 
 
 

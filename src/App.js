@@ -31,6 +31,8 @@ import RegisterUser from './conpnents/Dash/pages/User/Registration';
 import CreateRole from './conpnents/Dash/pages/User/CreateRole';
 //Faculty component start 
 import MainFacultyComponent from './conpnents/Dash/pages/faulty/MainFacultyComponent';
+import MarkStudentsAttendance from './conpnents/Dash/pages/faulty/MarkStudentsAttendance';
+import DatewiseStudentsAttendance from './conpnents/Dash/pages/faulty/DatewiseStudentsAttendance';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { getToken } from './state/LocalStorageService';
@@ -39,7 +41,11 @@ import { fetchUserRecord } from './state/features/UserSlice';
 
 //Autherization for frontend components
 import componentAuthorization from './Auth/FrontendAutherization.js';
-import MarkStudentsAttendance from './conpnents/Dash/pages/faulty/MarkStudentsAttendance';
+// users profiles 
+// student 
+import Profile from './conpnents/Dash/pages/students/Profile';
+import LoginPage from './conpnents/formComponents/LoginPage';
+// admin
 
 
 
@@ -90,6 +96,7 @@ function App() {
           {/* public Route */}
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={auth ? <Navigate to="/dashboard" /> : <SigninPage />} />
+          {/* <Route path="/signin" element={auth ? <Navigate to="/dashboard" /> : <LoginPage />} /> */}
           <Route path="/About" element={<About />} />
           <Route path="/Course/:c_id" element={<CoursePage />} />
 
@@ -97,7 +104,12 @@ function App() {
 
         {/* private route  */}
         <Route path="/dashboard" element={!auth ? <Navigate to="/signin" /> : <Dashboard />} >
-          {/* element={!auth ? <Navigate to="/signin" /> : <Dashboard />}  */}
+
+          {/* Profile compoment route  */}
+          <Route exact path="/dashboard/profile" element={componentAuthorization.profileAuthorization() ? <Profile /> : <Navigate to="/dashboard" />} />
+
+
+
           {/* Student related Private Route  */}
 
           <Route exact path="/dashboard" element={<DashHome />} />
@@ -127,6 +139,7 @@ function App() {
           {/* faculty related private route  */}
           <Route exact path="/dashboard/faculty" element={<MainFacultyComponent />}>
             <Route path="markAttendance" element={componentAuthorization.authorizationMethod("/dashboard/faculty/markAttendance") ? <MarkStudentsAttendance /> : <Navigate to="/dashboard" />} />
+            <Route path="datewiseattendance" element={componentAuthorization.authorizationMethod("/dashboard/faculty/datewiseattendance") ? <DatewiseStudentsAttendance /> : <Navigate to="/dashboard" />} />
 
 
           </Route>

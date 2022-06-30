@@ -29,15 +29,7 @@ const loginValidation = (values) => {
     }
 
     //  validation for Role 
-    else if (!values.role) {
-        errors.role = "Role required "
-        // errors.submitStatus = false
-    }
 
-    else if (values.role !== "Student" && values.role !== "Faculty") {
-        errors.role = "Invalid role ! please choose from the given options"
-        // errors.submitStatus = false
-    }
     else {
         errors.submitStatus = true
     }

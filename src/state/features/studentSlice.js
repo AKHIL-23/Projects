@@ -7,6 +7,8 @@ const studentSlice = createSlice({
     initialState: {
         students: [],
         student: {},
+        viewAllStudentsAttendance: [],
+        viewParticularLogedStudentAttendance: [],
     },
     reducers: {
 
@@ -24,9 +26,13 @@ const studentSlice = createSlice({
         addStudent: (state, action) => {
             state.students = [action.payload, ...state.students];
         },
+        getAllStudentsAttendance: (state, action) => {
+            state.viewAllStudentsAttendance = action.payload
+
+        }
 
     },
 })
 
-export const { listAllStudents, getStudentRecord, clearFetechRecord, addStudent } = studentSlice.actions
+export const { listAllStudents, getStudentRecord, clearFetechRecord, addStudent, getAllStudentsAttendance } = studentSlice.actions
 export default studentSlice.reducer

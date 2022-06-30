@@ -74,12 +74,13 @@ const StudentsAttendanceTable = (props) => {
         }).then((result) => {
             result.json().then((res) => {
                 console.log(res)
+                alert(res.message)
+
 
             })
         })
         attendanceRecords = []
         values = {}
-
         event.target.reset();
 
     }
@@ -172,8 +173,11 @@ const StudentsAttendanceTable = (props) => {
                                                             {
                                                                 // {`atten['${record._id}']`}
                                                                 <div className='p-2 flex justify-evenly '>
-                                                                    <span>Present <input type="radio" name={`atten["${record.user_id.username}"]`} value='present' onClick={() => { tempfun(record._id, 'present') }} /></span>
-                                                                    <span>Absent <input type="radio" name={`atten["${record.user_id.username}"]`} value='absent' onClick={() => { tempfun(record._id, 'absent') }} /></span>
+                                                                    <label htmlFor={`${record._id}present`}> <span>Present </span></label>
+                                                                    <input type="radio" id={`${record._id}present`} name={`atten["${record._id}"]`} value='present' onClick={() => { tempfun(record._id, 'present') }} />
+
+                                                                    <label htmlFor={`${record._id}absent`}><span>Absent </span></label>
+                                                                    <input type="radio" id={`${record._id}absent`} name={`atten["${record._id}"]`} value='absent' onClick={() => { tempfun(record._id, 'absent') }} />
                                                                 </div>
 
                                                             }

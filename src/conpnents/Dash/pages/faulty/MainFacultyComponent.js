@@ -7,7 +7,7 @@ const MainFacultyComponent = () => {
             <section>
                 <div>
                     <NavLink end to="/dashboard/faculty/markAttendance" className="bg-blue-500 p-2 text-white rounded-md mr-3">Mark Students Attendance</NavLink>
-                    <NavLink end to="/dashboard/user/createrole" className="bg-blue-500 p-2 text-white rounded-md mr-3">Create Role</NavLink>
+                    <NavLink end to="/dashboard/faculty/datewiseattendance" className="bg-blue-500 p-2 text-white rounded-md mr-3">View Students Attendance</NavLink>
 
                 </div>
                 <div>

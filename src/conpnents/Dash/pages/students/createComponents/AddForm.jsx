@@ -27,12 +27,8 @@ const AddForm = () => {
   const onChange = (event) => {
 
     setValues({ ...values, [event.target.name]: event.target.value });
-    console.log(values)
-    console.log(values.admission_date)
-
-
-
-
+    // console.log(values)
+    // console.log(values.admission_date)
   }
   const [error, setError] = useState({});
 

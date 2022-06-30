@@ -35,5 +35,13 @@ class componentAuthorization {
 
 
     }
+
+    //Profile component authoriration 
+    static profileAuthorization = () => {
+        const logeduser = useSelector(state => state.user.user)
+        //TO DO
+        return true
+
+    }
 }
 export default componentAuthorization
