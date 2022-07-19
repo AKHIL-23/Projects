@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { getToken } from '../../../../state/LocalStorageService.js'
 import { GetAllModuleList, AssingModuleApi } from '../../../../state/servicesApi/ModuleAuthApi.js';
-import { ListAllUsers } from '../../../../state/servicesApi/UserAuthApi.js';
+
+// import { ListAllUsers } from '../../../../state/servicesApi/UserAuthApi.js';
+import { ListAllUsers } from '../../../../state/servicesApi/userAuthApi';
 import { fetchUsersRecords } from '../../../../state/features/UserSlice.js';
 import { AssinModuleListTORedux } from '../../../../state/features/ModuleSlice.js';
 

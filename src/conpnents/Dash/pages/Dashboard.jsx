@@ -16,7 +16,8 @@ import { clearAuthToken } from '../../../state/features/AuthTokenSlice';
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserRecord, setSidebar } from './../../../state/features/UserSlice'
 import { clearSidebar } from './../../../state/features/UserSlice';
-import { GetLogedUser } from '../../../state/servicesApi/UserAuthApi';
+// import { GetLogedUser } from '../../../state/servicesApi/UserAuthApi';
+import {GetLogedUser} from '../../../state/servicesApi/userAuthApi'
 const Dashboard = () => {
 
   const token = getToken()
