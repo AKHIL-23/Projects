@@ -9,6 +9,7 @@ import Whyus from "../commonUtils/Whyus";
 import StudentTestimonial from "../commonUtils/StudentTestimonial";
 import QueryForm from "../commonUtils/QueryForm";
 import Footer from "../commonUtils/Footer";
+import TrendingCourse from "../commonUtils/TrendingCourse";
 
 
 
@@ -21,6 +22,7 @@ const Home = () => {
             <Content />
             <CourseOwlCarousel />
             <Whyus />
+            <TrendingCourse/>
             <StudentTestimonial />
             <QueryForm />
             <Footer />

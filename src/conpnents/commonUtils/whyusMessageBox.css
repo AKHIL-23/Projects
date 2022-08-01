@@ -1,0 +1,28 @@
+.messageBoxWrapper {
+    /* background-color: indianred; */
+    width: 300px;
+    margin: 15px 0px;
+    /* display: flex;
+    align-items: flex-start;
+    padding: 2%; */
+}
+
+.messageBoxinnerItems {
+    background-color: indianred;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 22px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.messageBoxinnerItems i {
+    cursor: pointer;
+}
+
+.messageBoxinnerContent {
+    background-color: indianred;
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px;
+}

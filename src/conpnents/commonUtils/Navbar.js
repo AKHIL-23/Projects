@@ -14,7 +14,7 @@ const Navbar = () => {
     return (
 
         <>
-            <nav className='flex    items-center pt-4 px-3  sm:flex-row flex-col justify-around z-10   fixed top-0 w-full '>
+            <nav className='flex items-center pt-4 px-3  sm:flex-row flex-col justify-around z-10   fixed top-0 w-full ' id='navigationBar'>
                 <Link to="/" className=' transform hover:-translate-y-1 hover:scale-110 transition duration-500 ease-in-out ' >
                     <h1 className={`text-xl md:text-3xl 2xl:text-4xl  cursor-pointer text-blue-500`}>ZnInfotech</h1></Link>
 

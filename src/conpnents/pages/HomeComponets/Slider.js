@@ -8,7 +8,7 @@ function Slider() {
         <div className='relative'>
 
             <OwlCarousel
-                className="owl-theme relative  w-screen  mt-16  "
+                className="owl-theme relative  w-screen lg:-mt-5 mt-16"
                 loop={true}
                 autoplay={true}
                 dots={false}
